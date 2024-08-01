@@ -67,6 +67,19 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/activeUsers', [AdminController::class , 'activeUsers'])->name('admin.activeUsers');
 
     Route::get('/admin/requestLogs', [AdminController::class , 'requestLogs'])->name('admin.requestLogs');
+
+    
+    Route::get('/admin/all-request', [AdminController::class, 'allRequest'])->name('admin.allRequest');
+
+    Route::get('/admin/last-two-weeks', [AdminController::class, 'lastTwoWeeks'])->name('admin.lastTwoWeeks');
+
+    Route::get('/admin/last-month', [AdminController::class, 'lastMonth'])->name('admin.lastMonth');
+
+    Route::get('/admin/completed', [AdminController::class, 'completed'])->name('admin.completed');
+
+    Route::get('/admin/rejected', [AdminController::class, 'rejected'])->name('admin.rejected');
+
+    Route::get('/admin/for-deletion', [adminController::class, 'forDeletion'])->name('admin.forDeletion');
     
     Route::get('/admin/listOfRequestForms', [AdminController::class , 'listOfRequestForms'])->name('admin.listOfRequestForms');
 
@@ -109,7 +122,19 @@ Route::middleware(['auth', 'student'])->group(function () {
     Route::get('/student/createNewRequest', [StudentController::class , 'createNewRequest'])->name('student.createNewRequest');
 
     Route::get('/student/historyOfRequest', [StudentController::class , 'historyOfRequest'])->name('student.historyOfRequest');
-    
+
+    Route::get('/student/all-request', [StudentController::class, 'allRequest'])->name('student.allRequest');
+
+    Route::get('/student/last-two-weeks', [StudentController::class, 'lastTwoWeeks'])->name('student.lastTwoWeeks');
+
+    Route::get('/student/last-month', [StudentController::class, 'lastMonth'])->name('student.lastMonth');
+
+    Route::get('/student/completed', [StudentController::class, 'completed'])->name('student.completed');
+
+    Route::get('/student/rejected', [StudentController::class, 'rejected'])->name('student.rejected');
+
+    Route::get('/student/for-deletion', [StudentController::class, 'forDeletion'])->name('student.forDeletion');
+
     Route::post('/student/createNewRequest', [StudentController::class , 'request'])->name('student.request');
 
     Route::get('/student/trackRequest/{document}', [StudentController::class , 'trackRequest'])->name('student.trackRequest');

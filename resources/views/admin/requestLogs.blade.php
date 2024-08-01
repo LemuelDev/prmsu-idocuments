@@ -15,21 +15,27 @@
         <div class="py-4 flex justify-between items-center max-md:flex-col max-md:justify-center max-md:gap-6">
             <h4 class="font-bold text-2xl text-center max-sm:text-xl">Request Logs</h4>
             <select name="sort" id="sort" class="py-3 px-6 rounded-md border-none outline-none shadow bg-transparent">
-                <option value="" disabled selected>Sort</option>
-                <option value="7days">Last 7 days</option>
-                <option value="14days">Last Two Weeks</option>
-                <option value="21days">Last Three Weeks</option>
-                <option value="30days">Last Month</option>
-                <option value="60days">Last Two Months</option>
-                <option value="all">All Request</option>
+                <option value="{{ route('admin.requestLogs') }}" {{ request()->url() == route('admin.requestLogs') ? 'selected' : '' }}>All Request</option>
+                <option value="{{ route('admin.lastTwoWeeks') }}" {{ request()->url() == route('admin.lastTwoWeeks') ? 'selected' : '' }}>Last 2 weeks</option>
+                <option value="{{ route('admin.lastMonth') }}" {{ request()->url() == route('admin.lastMonth') ? 'selected' : '' }}>Last Month</option>
+                <option value="{{ route('admin.completed') }}" {{ request()->url() == route('admin.completed') ? 'selected' : '' }}>Completed</option>
+                <option value="{{ route('admin.rejected') }}" {{ request()->url() == route('admin.rejected') ? 'selected' : '' }}>Rejected</option>
+                <option value="{{ route('admin.forDeletion') }}" {{ request()->url() == route('admin.forDeletion') ? 'selected' : '' }}>For Deletion</option>
             </select>
         </div>
+        
+        <script>
+            document.getElementById("sort").addEventListener("change", function() {
+                var selectedValue = this.value;
+                if (selectedValue) {
+                    window.location.href = selectedValue;
+                }
+            });
+           
+        </script>
 
         @include('admin.tableLogs')
         
-        <div class="py-10 flex justify-end">
-            <a href="#" class="px-6 py-3 rounded-md border-none outline-none text-white text-center text-xl bg-green-500 hover:bg-green-600">Download Logs</a>
-        </div>
 
     </section>
 

@@ -16,6 +16,13 @@ class RequestedDocument extends Model
        'copies_orig',
        'purpose',
        'status',
+       'birthplace',
+       'student_number',
+       'check_graduate',
+       'last_term',
+       'last_school_year',
+       'check_correction',
+       'orig_name'
     ];
 
     protected $table = 'requesteddocuments';

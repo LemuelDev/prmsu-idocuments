@@ -27,7 +27,7 @@ class StudentController extends Controller
 
     public function updateProfile(User $student) {
         
-        $requiredFields = ['name', 'email', 'username', 'age', 'course', 'sex', 'birthday', 'address'];
+        $requiredFields = ['name', 'email', 'username', 'age', 'course', 'sex', 'birthday', 'address', 'year', 'phone_number'];
         
         foreach ($requiredFields as $field) {
             if (empty(request($field))) {
@@ -44,6 +44,8 @@ class StudentController extends Controller
             "course" => "required",
             "address" => "required",
             "birthday" => "required",
+            "year" => "required",
+            "phone_number" => "required",
         ]);
 
         $student->userProfile()->update([
@@ -54,6 +56,8 @@ class StudentController extends Controller
             "sex" => $validated["sex"],
             "address" => $validated["address"],
             "birthday" => $validated["birthday"],
+            "year" => $validated["year"],
+            "phone_number" => $validated["phone_number"],
         ]);
 
         $student->update([
@@ -98,6 +102,68 @@ class StudentController extends Controller
         return  view('student.historyOfRequest',[
             "forms" => $requestForms->paginate(7)
         ]);
+    }
+
+    public function allRequest()
+    {
+        return $this->historyOfRequest();
+    }
+
+    public function lastTwoWeeks()
+    {
+        $requestForms = $this->historyOfRequestQuery()
+            ->where('created_at', '>=', now()->subDays(14));
+
+        return view('student.historyOfRequest', [
+            "forms" => $requestForms->paginate(7)
+        ]);
+    }
+
+    public function lastMonth()
+    {
+        $requestForms = $this->historyOfRequestQuery()
+            ->where('created_at', '>=', now()->subMonth());
+
+        return view('student.historyOfRequest', [
+            "forms" => $requestForms->paginate(7)
+        ]);
+    }
+
+    public function completed()
+    {
+        $requestForms = $this->historyOfRequestQuery()
+            ->where('status', 'completed');
+
+        return view('student.historyOfRequest', [
+            "forms" => $requestForms->paginate(7)
+        ]);
+    }
+
+    public function rejected()
+    {
+        $requestForms = $this->historyOfRequestQuery()
+            ->where('status', 'rejected');
+
+        return view('student.historyOfRequest', [
+            "forms" => $requestForms->paginate(7)
+        ]);
+    }
+
+    public function forDeletion()
+    {
+        $requestForms = $this->historyOfRequestQuery()
+            ->where('status', 'for deletion');
+
+        return view('student.historyOfRequest', [
+            "forms" => $requestForms->paginate(7)
+        ]);
+    }
+
+    private function historyOfRequestQuery()
+    {
+        return RequestedDocument::orderBy('created_at', 'desc')
+            ->where('userprofile_id', auth()->user()->userProfile->id)
+            ->whereIn('status', ['completed', 'rejected', 'for deletion']);
     }
 
     public function updatePassword() {
@@ -147,17 +213,70 @@ class StudentController extends Controller
             "num-ctc" => "required",
             "num-orig" => "required",
             "purpose" => "required",
+            "birthplace" => "required",
+            "student_number" => "required",
+            "check_graduate" => "required",
+            "last_term"  => "nullable|string|max:40",
+            "last_school_year" => "nullable|string|max:40",
+            "check_correction" => "required",
+            "orig_name"  => "nullable|string|max:40",
         ]);
 
 
-        RequestedDocument::create([
-            "userprofile_id" => auth()->user()->userProfile->id,
-            "requested_document" => $validate["requested_document"],
-            "copies_ctc" => $validate["num-ctc"],
-            "copies_orig" => $validate["num-orig"],
-            "purpose" => $validate["purpose"],
-            "status" => 'pending',
-        ]);
+        if($validate["check_graduate"] === 'Yes' && (!empty($validate["last_term"]) || !empty($validate["last_school_year"])) ){
+            return back()->withErrors(['general' => 'Invalid inputs. Please try again.']);
+        }
+        
+        if ($validate["check_correction"] === 'No' && !empty($validate["orig_name"])){
+            return back()->withErrors(['general' => 'Invalid inputs. Please try again.']);
+        }
+
+
+        if(!empty($validate["last_term"]) && !empty($validate["last_school_year"])){
+            RequestedDocument::create([
+                "userprofile_id" => auth()->user()->userProfile->id,
+                "requested_document" => $validate["requested_document"],
+                "copies_ctc" => $validate["num-ctc"],
+                "copies_orig" => $validate["num-orig"],
+                "purpose" => $validate["purpose"],
+                "status" => 'pending',
+                "birthplace" =>  $validate["birthplace"],
+                "student_number" =>  $validate["student_number"],
+                "check_graduate" =>  $validate["check_graduate"],
+                "check_correction" => $validate["check_correction"],
+                "last_term" =>  $validate["last_term"],
+                "last_school_year" =>  $validate["last_school_year"],
+            ]);
+        }elseif(!empty($validate["last_term"]) && !empty($validate["last_school_year"]) && !empty($validate["orig_name"])){
+            RequestedDocument::create([
+                "userprofile_id" => auth()->user()->userProfile->id,
+                "requested_document" => $validate["requested_document"],
+                "copies_ctc" => $validate["num-ctc"],
+                "copies_orig" => $validate["num-orig"],
+                "purpose" => $validate["purpose"],
+                "status" => 'pending',
+                "birthplace" =>  $validate["birthplace"],
+                "student_number" =>  $validate["student_number"],
+                "check_graduate" =>  $validate["check_graduate"],
+                "check_correction" => $validate["check_correction"],
+                "last_term" =>  $validate["last_term"],
+                "last_school_year" =>  $validate["last_school_year"],
+                "orig_name" =>  $validate["orig_name"],
+            ]);
+        }else {
+            RequestedDocument::create([
+                "userprofile_id" => auth()->user()->userProfile->id,
+                "requested_document" => $validate["requested_document"],
+                "copies_ctc" => $validate["num-ctc"],
+                "copies_orig" => $validate["num-orig"],
+                "purpose" => $validate["purpose"],
+                "status" => 'pending',
+                "birthplace" =>  $validate["birthplace"],
+                "student_number" =>  $validate["student_number"],
+                "check_graduate" =>  $validate["check_graduate"],
+                "check_correction" => $validate["check_correction"],
+            ]);
+        }
 
         return redirect()->route('student.listOfRequestForms')->with('success', "Requested Successfully");
 

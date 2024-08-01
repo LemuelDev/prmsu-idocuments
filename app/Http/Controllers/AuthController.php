@@ -20,7 +20,7 @@ class AuthController extends Controller
     }
     public function store() {
 
-        $requiredFields = ['lastname', 'firstname', 'email', 'username', 'password', 'age', 'course', 'sex', 'birthday', 'address'];
+        $requiredFields = ['lastname', 'firstname', 'email', 'username', 'password', 'age', 'course', 'sex', 'birthday', 'address', 'year' , 'phone_number'];
     
         foreach ($requiredFields as $field) {
             if (empty(request($field))) {
@@ -38,6 +38,8 @@ class AuthController extends Controller
             "sex" => "required",
             "age" => "required",
             "course" => "required",
+            "year" => "required",
+            "phone_number" => "required",
             "address" => "required",
             "birthday" => "required",
             "password" => [
@@ -57,18 +59,15 @@ class AuthController extends Controller
         
 
     
-        // Concatenate lastname, firstname, and middlename into name
-        $name = $validated["lastname"] . ', ' . $validated["firstname"];
-        if (!empty($validated["middlename"]) && !empty($validated["extensionname"])) {
-            $name .= ' ' . $validated["middlename"] . $validated["extensionname"];
-        }elseif(!empty($validated["middlename"])){
+        $name = $validated["firstname"];
+        if (!empty($validated["middlename"])) {
             $name .= ' ' . $validated["middlename"];
-        }else{
+        }
+        $name .= ' ' . $validated["lastname"];
+        if (!empty($validated["extensionname"])) {
             $name .= ' ' . $validated["extensionname"];
-        };
-    
-       
-    
+        }
+        
         // Create the user profile
         $userProfile = UserProfile::create([
             "name" => $name,
@@ -78,6 +77,8 @@ class AuthController extends Controller
             "sex" => $validated["sex"],
             "address" => $validated["address"],
             "birthday" => $validated["birthday"],
+            "year" => $validated["year"],
+            "phone_number" => $validated["phone_number"],
         ]);
     
         // Create the user and associate it with the user profile

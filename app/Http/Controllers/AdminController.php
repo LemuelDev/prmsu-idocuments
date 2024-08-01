@@ -219,6 +219,69 @@ class AdminController extends Controller
         ]);
     }
 
+    
+    public function allRequest()
+    {
+        return $this->requestLogs();
+    }
+
+    public function lastTwoWeeks()
+    {
+        $requestForms = $this->historyOfRequestQuery()
+            ->where('created_at', '>=', now()->subDays(14));
+
+        return view('admin.requestLogs', [
+            "forms" => $requestForms->paginate(7)
+        ]);
+    }
+
+    public function lastMonth()
+    {
+        $requestForms = $this->historyOfRequestQuery()
+            ->where('created_at', '>=', now()->subMonth());
+
+        return view('admin.requestLogs', [
+            "forms" => $requestForms->paginate(7)
+        ]);
+    }
+
+    public function completed()
+    {
+        $requestForms = $this->historyOfRequestQuery()
+            ->where('status', 'completed');
+
+        return view('admin.requestLogs', [
+            "forms" => $requestForms->paginate(7)
+        ]);
+    }
+
+    public function rejected()
+    {
+        $requestForms = $this->historyOfRequestQuery()
+            ->where('status', 'rejected');
+
+        return view('admin.requestLogs', [
+            "forms" => $requestForms->paginate(7)
+        ]);
+    }
+
+    public function forDeletion()
+    {
+        $requestForms = $this->historyOfRequestQuery()
+            ->where('status', 'for deletion');
+
+        return view('admin.requestLogs', [
+            "forms" => $requestForms->paginate(7)
+        ]);
+    }
+
+    private function historyOfRequestQuery()
+    {
+        return RequestedDocument::orderBy('created_at', 'desc')
+            ->whereIn('status', ['completed', 'rejected', 'for deletion']);
+    }
+    
+
     public function manageDigitalForms() {
         return  view('admin.profile');
     }

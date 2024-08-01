@@ -17,6 +17,8 @@ class UserProfile extends Model
         'course',
         'address',
         'birthday',
+        'year',
+        'phone_number'
     ];
 
     protected $table = 'userprofiles';

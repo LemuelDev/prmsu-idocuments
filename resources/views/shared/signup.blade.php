@@ -42,15 +42,6 @@
                  </span>
             </div>
     
-            <div>
-                <label for="course">COURSE:</label>
-                <select name="course" id="course" class="py-3 rounded-md w-full px-6 bg-slate-100 border-black outline-green-500">
-                    <option value="" disabled selected>Select Course</option>
-                    <option value="bs_infotech">BS INFORMATION TECHNOLOGY</option>
-                    <option value="bs_fisheries">BS FISHERIES</option>
-                </select>
-            </div>
-    
             <div class="max-[525px]:col-span-2">
                 <label for="username">Username:</label>
                 <input type="text" name="username" id="username" value="{{ old('username') }}" placeholder="Enter username..." class="py-3 rounded-md w-full px-6 bg-slate-100 border-black outline-green-500">
@@ -68,14 +59,14 @@
     
             <div class="max-[525px]:col-span-2">
                 <label for="age">Age:</label>
-                <input type="number" name="age" id="age" value="{{ old('agename') }}" placeholder="Enter your age..." class="py-3 rounded-md w-full px-6 bg-slate-100 border-black outline-green-500">
+                <input type="number" name="age" id="age" value="{{ old('age') }}" placeholder="Enter your age..." class="py-3 rounded-md w-full px-6 bg-slate-100 border-black outline-green-500">
             </div>
     
-            <div class="max-[525px]:col-span-2 lg:col-span-2">
+            <div class="max-[525px]:col-span-2" >
                 <label for="birthday">Birthdate:</label>
                 <input type="date" name="birthday" id="birthday" value="{{ old('birthday') }}" placeholder="Enter your birthday..." class="py-3 rounded-md w-full px-6 bg-slate-100 border-black outline-green-500">
             </div>
-            <div>
+            <div class="max-[525px]:col-span-2">
                 <label for="sex">SEX:</label>
                 <select name="sex" id="sex" class="py-3 rounded-md w-full px-6 bg-slate-100 border-black outline-green-500">
                     <option value="" disabled selected>Select Sex</option>
@@ -83,15 +74,37 @@
                     <option value="female">FEMALE</option>
                 </select>
             </div>
+            <div class="max-[525px]:col-span-2">
+                <label for="course">COURSE:</label>
+                <select name="course" id="course" class="py-3 rounded-md w-full px-6 bg-slate-100 border-black outline-green-500">
+                    <option value="" disabled selected>Select Course</option>
+                    <option value="bs_infotech">BS INFORMATION TECHNOLOGY</option>
+                    <option value="bs_fisheries">BS FISHERIES</option>
+                </select>
+            </div>
+            <div class="max-[525px]:col-span-2">
+                <label for="year">YEAR:</label>
+                <select name="year" id="year" class="py-3 rounded-md w-full px-6 bg-slate-100 border-black outline-green-500">
+                    <option value="" disabled selected>Select Year</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+            <div class="max-[525px]:col-span-2">
+                <label for="phone_number">Number:</label>
+                <input type="number" name="phone_number" id="phone_number" value="{{ old('number') }}" placeholder="Enter your phone number..." class="py-3 rounded-md w-full px-6 bg-slate-100 border-black outline-green-500">
+            </div>
     
-            <div class="max-[525px]:col-span-2 lg:col-span-2">
+            <div class="max-[525px]:col-span-2">
                 <label for="password">Password:</label>
                 <input type="password" name="password" id="password" placeholder="Enter password..." class="py-3 rounded-md w-full px-6 bg-slate-100 border-black outline-green-500">
                 <span class="text-sm text-gray-500 italic">
                     Must contain at least one lowercase letter, one uppercase letter, one number, and one special character.
                 </span>
             </div>
-    
+            
             <div class="max-lg:col-span-2">
                 <label for="password_confirmation">Confirm Password:</label>
                 <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Confirm password..." class="py-3 rounded-md w-full px-6 bg-slate-100 border-black outline-green-500">

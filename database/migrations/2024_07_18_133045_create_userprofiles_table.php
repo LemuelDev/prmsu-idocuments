@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('course');
             $table->string('address');
             $table->string('birthday');
+            $table->string('year');
+            $table->string('phone_number');
             $table->string('user_type')->default('student');
             $table->string('user_status')->default('enable');
             $table->string('isPending')->default('pending');

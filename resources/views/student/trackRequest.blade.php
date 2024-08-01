@@ -18,7 +18,7 @@
 
         <div class="w-full rounded-md shadow mt-8 py-6 px-4 md:px-8 flex items-start justify-start gap-2 flex-col">
             
-            <div class="flex justify-around w-full max-md:flex-col max-md:justify-center max-md:items-center">
+            <div class="flex justify-center gap-8 w-full max-md:flex-col  max-md:items-center">
                 <div class="p-3 flex items-center gap-4 justify-center">
                     <p class="text-lg font-bold">REQUEST_ID:</p>
                     <span class="font-light text-xl">{{$requestDocument->id}}</span>
@@ -29,14 +29,14 @@
                 </div>
                 <div class="p-3 flex items-center text-center gap-4 justify-center">
                     <p class="text-lg font-bold">Date Requested:</p>
-                    <span class="font-light text-lg px-2">{{$requestDocument->created_at}}</span>
+                    <span class="font-light text-lg px-2">{{$requestDocument->created_at->format('F j, Y')}}</span>
                 </div>
             </div>
             
             <div class="w-full">
                 <h4 class="text-xl font-bold tracking-wide py-4 text-center">Additional Details:</h4>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 w-full md:items-center md:text-center md:max-w-[800px] mx-auto gap-4 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full md:items-center md:text-center  mx-auto gap-4 py-8">
                 <div class="p-3 flex gap-2 md:items-start justify-center items-center">
                     <span class="font-bold text-md md:text-lg text-center">Requested Document:</span>
                     <p class="text-lg text-center">{{$requestDocument->requested_document}}</p>
@@ -52,6 +52,14 @@
                 <div class="p-3 flex gap-2 md:items-start justify-center items-center">
                     <span class="font-bold text-md md:text-lg">Purpose of Request:</span>
                     <p class="text-lg">{{$requestDocument->purpose}}</p>
+                </div>
+                <div class="p-3 flex gap-2 md:items-start justify-center items-center">
+                    <span class="font-bold text-md md:text-lg">Birthplace:</span>
+                    <p class="text-lg">{{$requestDocument->birthplace}}</p>
+                </div>
+                <div class="p-3 flex gap-2 md:items-start justify-center items-center">
+                    <span class="font-bold text-md md:text-lg">Student Number:</span>
+                    <p class="text-lg">{{$requestDocument->student_number}}</p>
                 </div>
             </div>
 
