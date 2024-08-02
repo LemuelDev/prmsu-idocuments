@@ -119,7 +119,7 @@ class AdminController extends Controller
     
     public function updateProfile(User $student) {
         
-        $requiredFields = ['name', 'email', 'username', 'age', 'course', 'sex', 'birthday', 'address'];
+        $requiredFields = ['firstname', 'lastname', 'email', 'username', 'age', 'sex', 'birthday', 'address', 'phone_number'];
         
         foreach ($requiredFields as $field) {
             if (empty(request($field))) {
@@ -128,24 +128,40 @@ class AdminController extends Controller
         }
 
         $validated = request()->validate([
-            "name" => "nullable|string|max:40",
+            "lastname" => "required|string|max:40",
+            "firstname" => "required|string|max:40",
+            "middlename" => "nullable|string|max:40",
+            "extensionname" => "nullable|string|max:40",
             "email" => "required|email",
             "username" => "required|max:40",
             "sex" => "required",
             "age" => "required",
-            "course" => "required",
             "address" => "required",
             "birthday" => "required",
+            "phone_number" => "required",
         ]);
 
+        $name = $validated["firstname"];
+        if (!empty($validated["middlename"])) {
+            $name .= ' ' . $validated["middlename"];
+        }
+        $name .= ' ' . $validated["lastname"];
+        if (!empty($validated["extensionname"])) {
+            $name .= ' ' . $validated["extensionname"];
+        }
+
         $student->userProfile()->update([
-            "name" => $validated["name"],
+            "firstname" => $validated["firstname"],
+            "middlename" => $validated["middlename"],
+            "lastname" => $validated["lastname"],
+            "extensionname" => $validated["extensionname"],
+            "name" => $name,
             "email" => $validated["email"],
             "age" => $validated["age"],
-            "course" => $validated["course"],
             "sex" => $validated["sex"],
             "address" => $validated["address"],
             "birthday" => $validated["birthday"],
+            "phone_number" => $validated["phone_number"]
         ]);
 
         $student->update([

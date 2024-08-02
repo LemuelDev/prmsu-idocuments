@@ -22,8 +22,20 @@
                 @csrf
                 @method('PUT')
                 <div class="p-4 flex items-center gap-4">
-                    <label for="name" class="font-bold">NAME:</label>
-                    <input type="text" name="name" readonly class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->name}}">
+                    <label for="name" class="font-bold">FIRSTNAME:</label>
+                    <input type="text" name="firstname" class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->firstname}}">
+                </div>
+                <div class="p-4 flex items-center gap-4">
+                    <label for="name" class="font-bold">MIDDLENAME:</label>
+                    <input type="text" name="middlename" class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->middlename}}">
+                </div>
+                <div class="p-4 flex items-center gap-4">
+                    <label for="name" class="font-bold">LASTNAME:</label>
+                    <input type="text" name="lastname" class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->lastname}}">
+                </div>
+                <div class="p-4 flex items-center gap-4">
+                    <label for="name" class="font-bold">EXTENSIONNAME:</label>
+                    <input type="text" name="extensionname" class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->extensionname}}">
                 </div>
     
                 <div class="p-4 flex items-center gap-4">
@@ -61,12 +73,8 @@
                  </div>
 
                  <div class="p-4 flex items-center gap-4">
-                    <label for="course" class="font-bold">COURSE:</label>
-                    <select name="course" id="course" class="py-3 rounded-md w-full px-6 bg-slate-100 border-black shadow outline-green-500 bg-transparent" >
-                        <option value="" disabled selected>Select Course</option>
-                        <option value="bs_infotech" {{ auth()->user()->userProfile->course == 'bs_infotech' ? 'selected' : '' }}>BS INFORMATION TECHNOLOGY</option>
-                        <option value="bs_fisheries" {{ auth()->user()->userProfile->course == 'bs_fisheries' ? 'selected' : '' }}>BS FISHERIES</option>
-                    </select>
+                    <label for="phone_number" class="font-bold">Number:</label>
+                    <input type="number" name="phone_number" id="phone_number" value="{{auth()->user()->userProfile->phone_number}}" placeholder="Enter your phone number..." class="py-3 rounded-md w-full px-6 bg-transparent shadow bg-slate-100 border-black outline-green-500">
                 </div>
  
                  <div class="p-4 flex items-center gap-4 max-w-[400px] mx-auto md:col-span-2 ">
@@ -103,10 +111,21 @@
 
         <div class="mt-4 py-10  w-full rounded-xl shadow grid grid-cols-2 max-md:grid-cols-1 gap-4 px-6">
             <div class="p-4 flex items-center gap-4">
-                 <label for="name" class="font-bold">NAME:</label>
-                 <input type="text" name="name" readonly class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->name}}">
-             </div>
- 
+                <label for="name" class="font-bold">FIRSTNAME:</label>
+                <input type="text" name="firstname" readonly class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->firstname}}">
+            </div>
+            <div class="p-4 flex items-center gap-4">
+               <label for="name" class="font-bold">MIDDLENAME:</label>
+               <input type="text" name="middlename" readonly class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->middlename }}">
+           </div>
+           <div class="p-4 flex items-center gap-4">
+               <label for="name" class="font-bold">LASTNAME:</label>
+               <input type="text" name="lastname" readonly class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->lastname}}">
+           </div>
+           <div class="p-4 flex items-center gap-4">
+               <label for="name" class="font-bold">EXTENSIONNAME:</label>
+               <input type="text" name="extensionname" readonly class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->extensionname }}">
+           </div>
              <div class="p-4 flex items-center gap-4">
                  <label for="username" class="font-bold">USERNAME:</label>
                  <input type="text" name="username" readonly  class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->username}}">
@@ -137,9 +156,9 @@
                 <input type="text" name="age"  class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->age}}">
             </div>
 
-             <div class="p-4 flex items-center gap-4">
-                <label for="course" class="font-bold">COURSE:</label>
-                <input type="text" name="course" readonly  class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->course}}">
+            <div class="p-4 flex items-center gap-4">
+                <label for="phone_number" class="font-bold">Phone Number:</label>
+                <input type="text" name="phone_number" readonly  class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->phone_number}}">
             </div>
  
              <div class="p-4 flex items-center gap-4 max-w-[500px] mx-auto md:col-span-2">

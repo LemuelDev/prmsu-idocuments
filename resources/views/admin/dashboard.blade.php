@@ -15,9 +15,6 @@
             
             <a href="{{route('admin.listOfRequestForms')}}" class="text-xl max-md:text-lg max-md:px-12 max-lg:px-18 max-sm:px-9  font-bold px-16 py-20 flex flex-col items-center justify-center rounded-xl shadow-2xl bg-[#4A249D] hover:bg-[#3e2478] text-white">
             <span class="text-2xl"><box-icon name='notepad' type='solid' color='#ffffff' ></box-icon></span>List of Request Forms</a>
-            
-            <a href="{{route('admin.manageDigitalForms')}}" class="text-xl max-md:text-lg max-md:px-12 max-lg:px-18  max-sm:px-9 font-bold px-16 py-20 flex flex-col items-center justify-center rounded-xl shadow-2xl bg-[#f3c335] hover:bg-[#d5af3d] text-white">
-            <span class="text-2xl"><box-icon name='notepad' type='solid' color='#ffffff' ></box-icon></span>Manage Digital Forms</a>
 
             <a href="{{route('admin.approvals')}}" class="text-xl max-md:text-lg max-md:px-12 max-lg:px-18 max-sm:px-9  font-bold px-16 py-20 flex flex-col items-center justify-center rounded-xl shadow-2xl bg-[#009FBD] hover:bg-[#2f899b] text-white">
             <span class="text-2xl"><box-icon name='user-check' type='solid' color='#ffffff' ></box-icon></span>Approvals</a>

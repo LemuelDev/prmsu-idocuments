@@ -70,6 +70,10 @@ class AuthController extends Controller
         
         // Create the user profile
         $userProfile = UserProfile::create([
+            "firstname" => $validated["firstname"],
+            "middlename" => $validated["middlename"],
+            "lastname" => $validated["lastname"],
+            "extensionname" => $validated["extensionname"],
             "name" => $name,
             "email" => $validated["email"],
             "age" => $validated["age"],

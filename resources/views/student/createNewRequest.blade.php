@@ -25,6 +25,18 @@
                         <option value="" disabled selected>Select Document</option>
                         <option value="Certificate of Enrollment">Certificate of Enrollment</option>
                         <option value="Certificate of Grades">Certificate of Grades</option>
+                        <option value="Certificate of GWA">Certificate of GWA</option>
+                        <option value="Certificate of Academic Completion">Certificate of Academic Completion</option>
+                        <option value="Certificate of Graduation">Certificate of Graduation</option>
+                        <option value="Certificate of Candidate for Graduation">Certificate of Candidate for Graduation</option>
+                        <option value="Certificate of Honor Graduate">Certificate of Honor Graduate</option>
+                        <option value="Certificate of English as Intruction">Certificate of English as Intruction</option>
+                        <option value="Certificate of Course Description">Certificate of Course Description</option>
+                        <option value="Original Diploma">Original Diploma</option>
+                        <option value="Copy of Diploma">Copy of Diploma</option>
+                        <option value="Form 137">Form 137</option>
+                        <option value="Related Learning Experience">Related Learning Experience</option>
+                        <option value="CAV">Certification / Authentication / Verification</option>
                         <option value="Transcript of Records">Transcript of Records</option>
                     </select>
                 </div>

@@ -27,16 +27,19 @@ class StudentController extends Controller
 
     public function updateProfile(User $student) {
         
-        $requiredFields = ['name', 'email', 'username', 'age', 'course', 'sex', 'birthday', 'address', 'year', 'phone_number'];
+        $requiredFields = ['firstname', 'lastname', 'email', 'username', 'age', 'course', 'sex', 'birthday', 'address', 'birthday' , 'year' , 'phone_number'];
         
         foreach ($requiredFields as $field) {
             if (empty(request($field))) {
                 return back()->withErrors(['general' => 'All fields must be filled up.']);
             }
-        }
+        } 
 
         $validated = request()->validate([
-            "name" => "nullable|string|max:40",
+            "lastname" => "required|string|max:40",
+            "firstname" => "required|string|max:40",
+            "middlename" => "nullable|string|max:40",
+            "extensionname" => "nullable|string|max:40",
             "email" => "required|email",
             "username" => "required|max:40",
             "sex" => "required",
@@ -48,8 +51,21 @@ class StudentController extends Controller
             "phone_number" => "required",
         ]);
 
+        $name = $validated["firstname"];
+        if (!empty($validated["middlename"])) {
+            $name .= ' ' . $validated["middlename"];
+        }
+        $name .= ' ' . $validated["lastname"];
+        if (!empty($validated["extensionname"])) {
+            $name .= ' ' . $validated["extensionname"];
+        }
+
         $student->userProfile()->update([
-            "name" => $validated["name"],
+            "firstname" => $validated["firstname"],
+            "middlename" => $validated["middlename"],
+            "lastname" => $validated["lastname"],
+            "extensionname" => $validated["extensionname"],
+            "name" => $name,
             "email" => $validated["email"],
             "age" => $validated["age"],
             "course" => $validated["course"],
@@ -232,22 +248,7 @@ class StudentController extends Controller
         }
 
 
-        if(!empty($validate["last_term"]) && !empty($validate["last_school_year"])){
-            RequestedDocument::create([
-                "userprofile_id" => auth()->user()->userProfile->id,
-                "requested_document" => $validate["requested_document"],
-                "copies_ctc" => $validate["num-ctc"],
-                "copies_orig" => $validate["num-orig"],
-                "purpose" => $validate["purpose"],
-                "status" => 'pending',
-                "birthplace" =>  $validate["birthplace"],
-                "student_number" =>  $validate["student_number"],
-                "check_graduate" =>  $validate["check_graduate"],
-                "check_correction" => $validate["check_correction"],
-                "last_term" =>  $validate["last_term"],
-                "last_school_year" =>  $validate["last_school_year"],
-            ]);
-        }elseif(!empty($validate["last_term"]) && !empty($validate["last_school_year"]) && !empty($validate["orig_name"])){
+        if(!empty($validate["last_term"]) && !empty($validate["last_school_year"]) && !empty($validate["orig_name"])){
             RequestedDocument::create([
                 "userprofile_id" => auth()->user()->userProfile->id,
                 "requested_document" => $validate["requested_document"],
@@ -262,6 +263,37 @@ class StudentController extends Controller
                 "last_term" =>  $validate["last_term"],
                 "last_school_year" =>  $validate["last_school_year"],
                 "orig_name" =>  $validate["orig_name"],
+            ]);
+        }elseif(!empty($validate["last_term"]) && !empty($validate["last_school_year"])){
+            RequestedDocument::create([
+                "userprofile_id" => auth()->user()->userProfile->id,
+                "requested_document" => $validate["requested_document"],
+                "copies_ctc" => $validate["num-ctc"],
+                "copies_orig" => $validate["num-orig"],
+                "purpose" => $validate["purpose"],
+                "status" => 'pending',
+                "birthplace" =>  $validate["birthplace"],
+                "student_number" =>  $validate["student_number"],
+                "check_graduate" =>  $validate["check_graduate"],
+                "check_correction" => $validate["check_correction"],
+                "last_term" =>  $validate["last_term"],
+                "last_school_year" =>  $validate["last_school_year"],
+                
+            ]);
+        }elseif(!empty($validate["orig_name"])){
+            RequestedDocument::create([
+                "userprofile_id" => auth()->user()->userProfile->id,
+                "requested_document" => $validate["requested_document"],
+                "copies_ctc" => $validate["num-ctc"],
+                "copies_orig" => $validate["num-orig"],
+                "purpose" => $validate["purpose"],
+                "status" => 'pending',
+                "birthplace" =>  $validate["birthplace"],
+                "student_number" =>  $validate["student_number"],
+                "check_graduate" =>  $validate["check_graduate"],
+                "check_correction" => $validate["check_correction"],
+                "orig_name" =>  $validate["orig_name"],
+                
             ]);
         }else {
             RequestedDocument::create([

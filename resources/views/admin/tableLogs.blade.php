@@ -29,6 +29,9 @@
               <span class="rounded-md p-2 bg-orange-500 text-white ">For Deletion</span>
               @endif
             </td>
+            @if ($form->status == 'completed')
+            <td class="p-3 text-md text-center tracking-wide"><a href="{{route('admin.download', $form->id)}}" class=""><span class="text-xl"><box-icon type='solid' name='download'></box-icon></span></a></td>
+            @endif
           </tr>
         @empty
         <div class="text-center ">

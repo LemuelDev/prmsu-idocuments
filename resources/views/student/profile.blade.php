@@ -21,8 +21,20 @@
                 @csrf
                 @method('PUT')
                 <div class="p-4 flex items-center gap-4">
-                    <label for="name" class="font-bold">NAME:</label>
-                    <input type="text" name="name" class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->name}}">
+                    <label for="name" class="font-bold">FIRSTNAME:</label>
+                    <input type="text" name="firstname" class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->firstname}}">
+                </div>
+                <div class="p-4 flex items-center gap-4">
+                    <label for="name" class="font-bold">MIDDLENAME:</label>
+                    <input type="text" name="middlename" class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->middlename}}">
+                </div>
+                <div class="p-4 flex items-center gap-4">
+                    <label for="name" class="font-bold">LASTNAME:</label>
+                    <input type="text" name="lastname" class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->lastname}}">
+                </div>
+                <div class="p-4 flex items-center gap-4">
+                    <label for="name" class="font-bold">EXTENSIONNAME:</label>
+                    <input type="text" name="extensionname" class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->extensionname}}">
                 </div>
     
                 <div class="p-4 flex items-center gap-4">
@@ -117,9 +129,21 @@
 
         <div class="mt-4 py-10  w-full rounded-xl shadow grid grid-cols-2 max-md:grid-cols-1 gap-4 px-6">
             <div class="p-4 flex items-center gap-4">
-                 <label for="name" class="font-bold">NAME:</label>
-                 <input type="text" name="name" readonly class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->name}}">
+                 <label for="name" class="font-bold">FIRSTNAME:</label>
+                 <input type="text" name="firstname" readonly class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->firstname}}">
              </div>
+             <div class="p-4 flex items-center gap-4">
+                <label for="name" class="font-bold">MIDDLENAME:</label>
+                <input type="text" name="middlename" readonly class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->middlename }}">
+            </div>
+            <div class="p-4 flex items-center gap-4">
+                <label for="name" class="font-bold">LASTNAME:</label>
+                <input type="text" name="lastname" readonly class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->lastname}}">
+            </div>
+            <div class="p-4 flex items-center gap-4">
+                <label for="name" class="font-bold">EXTENSIONNAME:</label>
+                <input type="text" name="extensionname" readonly class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->extensionname }}">
+            </div>
  
              <div class="p-4 flex items-center gap-4">
                  <label for="username" class="font-bold">USERNAME:</label>

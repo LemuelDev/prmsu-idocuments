@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PasswordResetController;
+use App\Http\Controllers\PdfController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
@@ -98,6 +99,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::put('/admin/profile/{student}', [AdminController::class , 'updateProfile'])->name('admin.updateProfile');
 
     Route::get('/admin/profile/edit', [AdminController::class , 'editProfile'])->name('admin.editProfile');
+
+    Route::get('/admin/download-form/{id}', [PdfController::class, 'downloadForm'])->name('admin.download');
 });
 
 
@@ -128,7 +131,7 @@ Route::middleware(['auth', 'student'])->group(function () {
     Route::get('/student/last-two-weeks', [StudentController::class, 'lastTwoWeeks'])->name('student.lastTwoWeeks');
 
     Route::get('/student/last-month', [StudentController::class, 'lastMonth'])->name('student.lastMonth');
-
+    
     Route::get('/student/completed', [StudentController::class, 'completed'])->name('student.completed');
 
     Route::get('/student/rejected', [StudentController::class, 'rejected'])->name('student.rejected');
@@ -141,7 +144,8 @@ Route::middleware(['auth', 'student'])->group(function () {
 
     Route::put('/student/trackRequest/{document}', [StudentController::class , 'deleteRequest'])->name('student.deleteRequest');
 
-
+    Route::get('/student/download-form/{id}', [PdfController::class, 'downloadForm'])->name('student.download');
+    
 
 });
 
