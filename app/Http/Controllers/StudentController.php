@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AvailableDocuments;
 use App\Models\RequestedDocument;
 use App\Models\User;
 use App\Models\UserProfile;
@@ -219,7 +220,10 @@ class StudentController extends Controller
     }
 
     public function createNewRequest() {
-        return  view('student.createNewRequest');
+
+        $documents = AvailableDocuments::orderBy('available_documents', 'asc')->get();
+
+        return  view('student.createNewRequest', ["documents" => $documents] );
     }
 
     public function request(){

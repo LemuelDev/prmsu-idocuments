@@ -55,7 +55,29 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::get('/admin/profile', [AdminController::class , 'profile'])->name('admin.profile');
 
-    Route::get('/admin/manageDigitalForms', [AdminController::class , 'manageDigitalForms'])->name('admin.manageDigitalForms');
+    Route::get('/admin/manageCourses', [AdminController::class , 'manageCourses'])->name('admin.manageCourses');
+
+    Route::get('/admin/createCourse', [AdminController::class , 'createCourse'])->name('admin.createCourse');
+
+    Route::post('/admin/createCourse', [AdminController::class , 'saveCourse'])->name('admin.saveCourse');
+
+    Route::get('/admin/editCourse/edit/{id}', [AdminController::class , 'editCourse'])->name('admin.editCourse');
+
+    Route::put('/admin/manageCourse/{id}', [AdminController::class , 'updateCourse'])->name('admin.updateCourse');
+
+    Route::delete('/admin/deleteCourse/{course}', [AdminController::class , 'deleteCourse'])->name('admin.deleteCourse');
+    
+    Route::get('/admin/manageAvailableDocuments', [AdminController::class , 'manageAvailableDocuments'])->name('admin.manageAvailableDocuments');
+
+    Route::get('/admin/createDocument', [AdminController::class , 'createDocument'])->name('admin.createDocument');
+
+    Route::post('/admin/createDocument', [AdminController::class , 'saveDocument'])->name('admin.saveDocument');
+
+    Route::get('/admin/editDocument/edit/{id}', [AdminController::class , 'editDocument'])->name('admin.editDocument');
+
+    Route::put('/admin/manageDocument/{id}', [AdminController::class , 'updateDocument'])->name('admin.updateDocument');
+
+    Route::delete('/admin/deleteDocument/{document}', [AdminController::class , 'deleteDocument'])->name('admin.deleteDocument');
 
     Route::get('/admin/approvals', [AdminController::class , 'approvals'])->name('admin.approvals');
 

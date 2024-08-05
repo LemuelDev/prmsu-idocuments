@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AvailableDocuments;
+use App\Models\Courses;
 use App\Models\RequestedDocument;
 use App\Models\User;
 use App\Models\UserProfile;
@@ -298,7 +300,111 @@ class AdminController extends Controller
     }
     
 
-    public function manageDigitalForms() {
-        return  view('admin.profile');
+    public function manageCourses() {
+
+        $courses = Courses::orderBy('created_at', 'desc');
+
+        return  view('admin.manageCourses', [
+            "courses" => $courses->paginate(5)
+        ]);
     }
+
+    public function createCourse(){
+
+       return view("admin.createCourse");
+    }
+
+    public function saveCourse(){
+
+        $validated = request()->validate([
+            "courses" => "required",
+            "courses_abr" => "required"
+        ]);
+
+        Courses::create([
+            "courses" => $validated["courses"],
+            "courses_abr" => $validated["courses_abr"]
+        ]);
+
+        return redirect()->route("admin.manageCourses")->with("success", "Updated Successfully!");
+    }
+
+    public function editCourse(Courses $id) {
+        
+        return view('admin.trackCourse', compact('id'));
+    }
+
+    public function updateCourse(Courses $id){
+
+        $validated = request()->validate([
+            "courses" => "required",
+            "courses_abr" => "required"
+        ]);
+
+        $id->update([
+            "courses" => $validated["courses"],
+            "courses_abr" => $validated["courses_abr"]
+        ]);
+
+        return redirect()->route("admin.manageCourses")->with("success", "Updated Successfully!");
+    }
+
+    
+    public function deleteCourse(Courses $course){
+       $course->delete();
+
+        return redirect()->route("admin.manageCourses")->with("success", "Deleted Successfully!");
+    }
+
+    public function manageAvailableDocuments() {
+
+        $documents = AvailableDocuments::orderBy('created_at', 'desc');
+
+        return  view('admin.manageAvailableDocuments', [
+            "documents" => $documents->paginate(5)
+        ]);
+    }
+
+    public function createDocument(){
+
+       return view("admin.createDocument");
+    }
+    public function saveDocument(){
+
+        $validated = request()->validate([
+          "available_documents" => "required",
+      ]);
+
+        AvailableDocuments::create([
+            "available_documents" => $validated["available_documents"],
+        ]);
+      
+      return redirect()->route("admin.manageAvailableDocuments")->with("success", "Updated Successfully!");
+  }
+
+    public function editDocument(AvailableDocuments $id) {
+
+        return view('admin.trackDocument', compact("id"));
+   
+    }
+
+    public function updateDocument(AvailableDocuments $document){
+
+          $validated = request()->validate([
+            "available_documents" => "required",
+        ]);
+
+        $document->update([
+            "available_documents" => $validated["available_documents"],
+        ]);
+        
+        return redirect()->route("admin.manageAvailableDocuments")->with("success", "Updated Successfully!");
+    }
+
+    public function deleteDocument(AvailableDocuments $document){
+
+        $document->delete();
+ 
+         return redirect()->route("admin.manageAvailableDocuments")->with("success", "Deleted Successfully!");
+     }
 }

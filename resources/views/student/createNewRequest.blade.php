@@ -22,8 +22,8 @@
                 <div class="p-4 flex items-center gap-4">
                     <label for="requested_document" class="font-bold text-md">Type of Document Requested:</label>
                     <select name="requested_document" id="requested_document" class="py-3 px-6 rounded-md border-none w-full outline-none shadow bg-transparent">
-                        <option value="" disabled selected>Select Document</option>
-                        <option value="Certificate of Enrollment">Certificate of Enrollment</option>
+                         <option value="" disabled selected>Select Document</option>
+                        {{-- <option value="Certificate of Enrollment">Certificate of Enrollment</option>
                         <option value="Certificate of Grades">Certificate of Grades</option>
                         <option value="Certificate of GWA">Certificate of GWA</option>
                         <option value="Certificate of Academic Completion">Certificate of Academic Completion</option>
@@ -37,7 +37,13 @@
                         <option value="Form 137">Form 137</option>
                         <option value="Related Learning Experience">Related Learning Experience</option>
                         <option value="CAV">Certification / Authentication / Verification</option>
-                        <option value="Transcript of Records">Transcript of Records</option>
+                        <option value="Transcript of Records">Transcript of Records</option> --}}
+
+                        @forelse ($documents as $document)
+                        <option value="{{$document->available_documents}}">{{$document->available_documents}}</option>
+                        @empty
+                             <option value="" >Coming Soon</option>
+                        @endforelse
                     </select>
                 </div>
 

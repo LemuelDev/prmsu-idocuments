@@ -78,8 +78,11 @@
                 <label for="course">COURSE:</label>
                 <select name="course" id="course" class="py-3 rounded-md w-full px-6 bg-slate-100 border-black outline-green-500">
                     <option value="" disabled selected>Select Course</option>
-                    <option value="bs_infotech">BS INFORMATION TECHNOLOGY</option>
-                    <option value="bs_fisheries">BS FISHERIES</option>
+                    @forelse ($courses as $course)
+                        <option value="{{$course->courses}}">{{$course->courses}}</option>
+                    @empty
+                        <option value="" disabled selected>Coming Soon</option>
+                    @endforelse
                 </select>
             </div>
             <div class="max-[525px]:col-span-2">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Courses;
 use App\Models\User;
 use App\Models\UserProfile;
 use Illuminate\Http\Request;
@@ -12,7 +13,12 @@ class AuthController extends Controller
       //
 
       public function register(){
-        return view ("shared.signup");
+
+        $courses = Courses::orderBy('courses', 'asc' )->get();
+
+        return view ("shared.signup", [
+            "courses" => $courses
+        ]);
     }
 
     public function login(){
