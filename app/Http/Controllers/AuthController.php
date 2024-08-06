@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\WelcomeEmail;
 use App\Models\Courses;
 use App\Models\User;
 use App\Models\UserProfile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
@@ -100,15 +102,22 @@ class AuthController extends Controller
     
         session()->put('email', $validated['email']);
     
-        // // Send email notification
-        // $message = "Thanks for Signing up! Your Account is still for approval. We will contact you once your account is approved and ready to use.";
-        // Mail::to($validated["email"])->send(new WelcomeEmail(
-        //     $message, 
-        //     $name, // Use concatenated name here
-        //     $validated["username"], 
-        //     $validated["email"], 
-        //     $validated["municipality"]
-        // ));
+        // Send email notification
+        $message = "Thanks for Signing up! Your Account is still for approval. We will contact you once your account is approved and ready to use.";
+        Mail::to($validated["email"])->send(new WelcomeEmail(
+            $message, 
+            $name, // Use concatenated name here
+            $validated["username"], 
+            $validated["email"], 
+            $validated["age"],
+            $validated["course"],
+            $validated["year"],
+            $validated["sex"],
+            $validated["address"],
+            $validated["birthday"],
+            $validated["phone_number"],
+
+        ));
     
         return redirect()->route("confirmation");
     }

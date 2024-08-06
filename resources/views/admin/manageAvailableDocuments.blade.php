@@ -5,7 +5,7 @@
     @include('shared.navbar')
     
     <div class="pl-10 pt-8 max-lg:pl-5 max-lg:max-w-14">
-        <a href="{{route('admin.manageAvailableDocuments')}}" class="inline-block py-2 pb-1 px-8 text-white text-center rounded-md no-underline hover:no-underline bg-blue-600 hover:bg-blue-700" style="line-height: 1.5;">
+        <a href="{{route('admin.dashboard')}}" class="inline-block py-2 pb-1 px-8 text-white text-center rounded-md no-underline hover:no-underline bg-blue-600 hover:bg-blue-700" style="line-height: 1.5;">
             <span class="text-2xl" style="display: inline-block; vertical-align: middle;"><box-icon name='left-arrow-alt' color='#ffffff'></box-icon></span>
         </a>
     </div>

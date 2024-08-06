@@ -81,7 +81,7 @@
                     @forelse ($courses as $course)
                         <option value="{{$course->courses}}">{{$course->courses}}</option>
                     @empty
-                        <option value="" disabled selected>Coming Soon</option>
+                        <option value="N/A">Coming Soon</option>
                     @endforelse
                 </select>
             </div>

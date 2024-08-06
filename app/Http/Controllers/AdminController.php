@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ApproveEmail;
+use App\Mail\ApproveRequestDocument;
+use App\Mail\RejectRequest;
 use App\Models\AvailableDocuments;
 use App\Models\Courses;
 use App\Models\RequestedDocument;
@@ -9,6 +12,7 @@ use App\Models\User;
 use App\Models\UserProfile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class AdminController extends Controller
 {
@@ -74,6 +78,9 @@ class AdminController extends Controller
         $document->update([
             "status" => "rejected"
         ]);
+
+        $message = "Your requested document is rejected. You can contact the admin regarding with your rejected request.";
+        Mail::to($document->userProfile->email )->send(new RejectRequest($message));
         
         return redirect()->route('admin.listOfRequestForms')->with('success', "The request is rejected");
     }
@@ -84,12 +91,20 @@ class AdminController extends Controller
             "status" => "completed"
         ]);
         
+        $message = "Your requested document is now approved. You can download the pdf from your history logs and view your request of document.";
+        Mail::to($document->userProfile->email )->send(new ApproveRequestDocument($message));
+        
         return redirect()->route('admin.listOfRequestForms')->with('success', "The request is approved!");
     }
 
     public function approve(UserProfile $user){
         $user->isPending = 'approved'; // Set the attribute directly
         $user->save(); 
+
+        $message = "Your account is finally active. You can now log in and request documents to the registrar office.";
+        Mail::to($user->email)->send(new ApproveEmail(
+            $message, 
+        ));
 
         return redirect()->route("admin.approvals")->with("success", "Approved Successfully!");
     }
@@ -326,7 +341,7 @@ class AdminController extends Controller
             "courses_abr" => $validated["courses_abr"]
         ]);
 
-        return redirect()->route("admin.manageCourses")->with("success", "Updated Successfully!");
+        return redirect()->route("admin.manageCourses")->with("success", "Created Successfully!");
     }
 
     public function editCourse(Courses $id) {
@@ -379,7 +394,7 @@ class AdminController extends Controller
             "available_documents" => $validated["available_documents"],
         ]);
       
-      return redirect()->route("admin.manageAvailableDocuments")->with("success", "Updated Successfully!");
+      return redirect()->route("admin.manageAvailableDocuments")->with("success", "Created Successfully!");
   }
 
     public function editDocument(AvailableDocuments $id) {
