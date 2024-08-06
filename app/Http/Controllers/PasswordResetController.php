@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SendResetPassEmail;
 use App\Models\PasswordReset;
 use App\Models\User;
 use App\Models\UserProfile;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
 class PasswordResetController extends Controller
@@ -44,11 +46,8 @@ class PasswordResetController extends Controller
         'expires_at' => $expiresAt
        ]);
 
-       // Send the reset link (you'll need to implement this method to send an actual email)
-       // For demonstration, we use Laravel's built-in Password broker for email
-        //    email
         
-        // Mail::to($user->email)->send(new SendResetPassEmail(route('password.reset', $token)));
+        Mail::to($user->email)->send(new SendResetPassEmail(route('password.reset', $token)));
 
        return back()->with('success', 'Password reset link sent!');
    }
