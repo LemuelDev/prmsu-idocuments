@@ -21,7 +21,7 @@
                     </span>
                     @else
                     <span class="text-xs text-gray-500 pt-0 text-center">
-                        Student || {{auth()->user()->userProfile->course}}
+                        Student || {{$courseAbr}}
                     </span>
                         
                     @endif

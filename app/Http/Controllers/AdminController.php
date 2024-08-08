@@ -123,6 +123,58 @@ class AdminController extends Controller
         return redirect()->route("admin.activeUsers")->with("success", "Disabled Successfully!");
     }
 
+    public function trackUser(UserProfile $id) {
+        $editing = true;
+
+        $courses = Courses::orderBy('courses', 'asc')->get();
+
+        return view("admin.trackUser",[
+            "editing" => $editing,
+            "user" => $id,
+            "courses" => $courses
+        ]);
+
+
+    }
+
+
+    public function updateUser(UserProfile $id) {
+        $requiredFields = ['name', 'email', 'course', 'sex', 'address', 'year' , 'phone_number'];
+    
+        foreach ($requiredFields as $field) {
+            if (empty(request($field))) {
+                return back()->withErrors(['general' => 'All fields must be filled up.'])->withInput();
+            }
+        }
+
+
+        $validated = request()->validate([
+            "name" => "required",
+            "email" => "required",
+            "course"=> "required",
+            "sex" => "required",
+            "address" => "required",
+            "year" => "required",
+            "phone_number"=> "required",
+        ]);
+
+        $id->update([
+            "course" => $validated["course"]
+        ]);
+
+        return redirect()->route("admin.activeUsers")->with("success", "User updated successfully!");
+
+    }
+
+
+    public function deleteUser(Userprofile $id){
+
+        $id->delete();
+
+        return redirect()->route("admin.activeUsers")->with("success", "User deleted successfully!");
+
+    }
+
     public function profile() {
         return  view('admin.profile');
     }
@@ -191,20 +243,39 @@ class AdminController extends Controller
 
 
     public function listOfRequestForms() {
+        // Array mapping full document names to their abbreviations
+        $documentAbbreviations = [
+            'certificate of grades' => 'cog',
+            'certificate of enrollment' => 'cor',
+            'transcript of records' => 'tor',
+            'original diploma' => 'diploma',
+            'copy of diploma' => 'diploma',
 
+        ];
         $requestForms = RequestedDocument::orderBy('created_at', 'desc')
-        ->whereIn('status', ['pending','for deletion']);
-
+            ->whereIn('status', ['pending', 'for deletion']);
+    
         if (request()->has('search')) {
             $searchQuery = request()->get('search');
-            $requestForms->where('requested_document', 'like', '%' . $searchQuery . '%');
-        }
+            $lowercaseSearchQuery = strtolower($searchQuery);
             
-
+            // Check if the search query matches an abbreviation
+            $abbreviation = array_search($lowercaseSearchQuery, array_map('strtolower', $documentAbbreviations));
+            
+            if ($abbreviation !== false) {
+                // If an abbreviation is found, search by the full name
+                $requestForms->where('requested_document', 'like', '%' . $abbreviation . '%');
+            } else {
+                // Otherwise, perform a normal search
+                $requestForms->where('requested_document', 'like', '%' . $searchQuery . '%');
+            }
+        }
+    
         return view('admin.listOfRequestForms', [
-            "forms" => $requestForms->paginate(7)
+            'forms' => $requestForms->paginate(7)
         ]);
     }
+    
 
     public function approvals() {
 
@@ -221,7 +292,8 @@ class AdminController extends Controller
         ]);
 
     }
-    public function activeUsers() {
+    public function activeUsers(Request $request) {
+
         $users = UserProfile::orderBy('created_at', 'desc' )
         ->where('isPending', 'approved')
         ->whereIn('user_status' ,['enable', 'disabled'])
@@ -232,8 +304,27 @@ class AdminController extends Controller
             $users->where('name', 'like', '%' . $searchQuery . '%');
         }
 
+        // Handle course filter
+        if ($request->has('sortCourse')) {
+            $course = $request->get('sortCourse');
+            if (!empty($course)) {
+                $users->where('course', $course);
+            }
+        }
+
+           // Handle year filter
+        if ($request->has('sortYear')) {
+            $year = $request->get('sortYear');
+            if (!empty($year)) {
+                $users->where('year', $year);
+            }
+        }
+
+        $courses = Courses::orderBy('courses', 'asc')->get();
+
         return  view('admin.activeUsers',[
-            "users" => $users->paginate(7)
+            "users" => $users->paginate(7),
+            "courses" => $courses
         ]);
     }
 

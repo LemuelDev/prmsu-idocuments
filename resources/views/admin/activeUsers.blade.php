@@ -13,16 +13,101 @@
     <section class="xl:max-w-[1300px] 2xl:max-w-[1500px] mx-auto p-4 w-full px-16 max-lg:px-4">
         <div class="py-4 flex justify-between items-center max-md:flex-col max-md:justify-center max-md:gap-6">
             <h4 class="font-bold text-2xl text-center max-sm:text-xl">Active Users</h4>
-            <form method="GET" class="flex items-center justify-center gap-4">
-                <input type="text" placeholder="Search Name" name="search" id="search" class="py-3 max-sm:py-2  px-6 bg-slate-200  rounded-lg w-full border border-gray-400 focus:border-none focus:outline-none focus:ring-2 focus:ring-green-500">
-                <button type="submit" class="py-3 px-6 max-sm:py-2 max-sm:px-4 bg-purple-600 rounded-md outline-none border-none text-white hover:bg-purple-700 ">Search</button>
-            </form>
+            <div class="flex max-sm:flex-col items-center gap-4">
+                <form method="GET" class="flex items-center justify-center gap-4">
+                    <input type="text" placeholder="Search Name" name="search" id="search" class="py-3 max-sm:py-2  px-6 shadow bg-transparent rounded-lg w-full border border-gray-400 focus:border-none focus:outline-none focus:ring-2 focus:ring-green-500">
+                    <button type="submit" class="py-3 px-6 max-sm:py-2 max-sm:px-4 bg-purple-600 rounded-md outline-none border-none text-white hover:bg-purple-700 ">Search</button>
+                </form>
+                <form method="GET" action="{{ route('admin.activeUsers') }}" class="flex flex-col gap-2 max-w-[300px] sm:max-w-[200px]">
+                    <select name="sortCourse" id="sortCourse" class="py-1 px-1 shadow bg-transparent rounded-md" onchange="this.form.submit()">
+                        @forelse ($courses as $course)
+                            <option value="{{ $course->courses }}" {{ request('sortCourse') == $course->courses ? 'selected' : '' }}>{{ $course->courses }}</option>
+                        @empty
+                            <option value="">No course atm.</option>
+                        @endforelse
+                        <option value="" {{ request('sortCourse') == "" ? 'selected' : '' }}>All Users</option>
+                    </select>
+                    <select name="sortYear" id="sortYear" onchange="this.form.submit()" class="shadow bg-transparent py-1 px-1">
+                        <option value="" {{ request('sortYear') == "" ? 'selected' : '' }}>Sort by Year</option>
+                        <option value="1" {{ request('sortYear') == "1" ? 'selected' : '' }}>1</option>
+                        <option value="2" {{ request('sortYear') == "2" ? 'selected' : '' }}>2</option>
+                        <option value="3" {{ request('sortYear') == "3" ? 'selected' : '' }}>3</option>
+                        <option value="4" {{ request('sortYear') == "4" ? 'selected' : '' }}>4</option>
+                    </select>
+                </form>
+                
+            </div>
         </div>
 
         @include('admin.tableUsers')
       
 
     </section>
+
+        <!-- Confirmation Modal -->
+        <div class="fixed inset-0 z-50 overflow-y-auto hidden" id="deleteConfirmationModal" tabindex="-1" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+            <div class="flex items-center justify-center min-h-screen">
+                <div class="bg-white rounded-lg shadow-xl max-w-lg mx-auto p-6">
+                    <div class="modal-header flex justify-start items-center py-1">
+                        <h5 class="text-lg font-medium" id="deleteConfirmationModalLabel">Confirm Deletion</h5>
+                    </div>
+                    <div class="modal-body my-4 text-red-500 py-4">
+                        Are you sure you want to delete this user? 
+                    </div>
+                    <div class="modal-footer flex justify-end gap-4">
+                        <button type="button" class="text-white py-2 px-6 bg-gray-500 hover:bg-gray-600 rounded-md" data-close-modal>Cancel</button>
+                        <form id="deleteForm" method="POST" action="">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="text-white py-2 px-6 bg-red-500 hover:bg-red-600 rounded-md">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+            // Open modal when a button with data-toggle-modal is clicked
+            document.querySelectorAll('[data-toggle-modal]').forEach(button => {
+                button.addEventListener('click', function() {
+                    const modalSelector = button.getAttribute('data-toggle-modal');
+                    const modal = document.querySelector(modalSelector);
+                    const fileId = button.getAttribute('data-file-id');
+
+                    // Ensure fileId is available
+                    if (fileId) {
+                        // Set the form action URL
+                        const deleteForm = modal.querySelector('#deleteForm');
+                        
+                        // Construct the URL with the file ID parameter
+                        const deleteUrl = `/admin/activeUsers/delete/${fileId}`;
+                        
+                        // Set the form action to the constructed URL
+                        deleteForm.setAttribute('action', deleteUrl);
+                        
+                        // Show the modal
+                        modal.classList.remove('hidden');
+                    }
+                });
+            });
+
+            // Close modal when a button with data-close-modal is clicked
+            document.querySelectorAll('[data-close-modal]').forEach(button => {
+                button.addEventListener('click', function() {
+                    const modal = button.closest('#deleteConfirmationModal');
+                    // Hide the modal
+                    modal.classList.add('hidden');
+                });
+            });
+            });
+
+
+        </script>
+
+
+
+
 
     {{-- success modal --}}
     @if (session()->has('success'))

@@ -89,9 +89,14 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::get('/admin/activeUsers', [AdminController::class , 'activeUsers'])->name('admin.activeUsers');
 
+    Route::get('/admin/activeUsers/view/{id}', [AdminController::class , 'trackUser'])->name('admin.trackUsers');
+
+    Route::put('/admin/activeUsers/update/{id}', [AdminController::class , 'updateUser'])->name('admin.updateUsers');
+
+    Route::delete('/admin/activeUsers/delete/{id}', [AdminController::class , 'deleteUser'])->name('admin.deleteUsers');
+
     Route::get('/admin/requestLogs', [AdminController::class , 'requestLogs'])->name('admin.requestLogs');
 
-    
     Route::get('/admin/all-request', [AdminController::class, 'allRequest'])->name('admin.allRequest');
 
     Route::get('/admin/last-two-weeks', [AdminController::class, 'lastTwoWeeks'])->name('admin.lastTwoWeeks');

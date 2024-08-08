@@ -18,15 +18,15 @@
              <td class="p-3 text-md text-center tracking-wide">{{$form->userProfile->name}}</td>
              <td class="p-3 text-md text-center tracking-wide">{{$form->userProfile->course}}</td>
              @if ($form->status === 'pending')
-             <td class="p-3 text-md text-center tracking-wide">
+             <td class="p-3 text-md text-center tracking-wide ">
               <span class="rounded-md p-2 bg-blue-500 text-white ">{{$form->status}}</span>
              </td>
              @else
-             <td class="p-3 text-md text-center tracking-wide">
+             <td class="p-3 text-md text-center tracking-wide min-w-40">
               <span class="rounded-md p-2 bg-orange-500 text-white ">{{$form->status}}</span>
               </td> 
              @endif
-             <td class="p-3 text-md text-center tracking-wide">{{$form->requested_document}} </td>
+             <td class="p-3 text-md text-center tracking-wide w-40">{{$form->requested_document}} </td>
              <td class="p-3 text-md text-center tracking-wide">{{ $form->created_at->format('F j, Y') }} </td>
              <td class="p-3 text-md text-center tracking-wide w-40">
                <div class="flex items-center justify-center gap-2">

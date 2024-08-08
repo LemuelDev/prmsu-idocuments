@@ -28,7 +28,7 @@ class StudentController extends Controller
 
     public function updateProfile(User $student) {
         
-        $requiredFields = ['firstname', 'lastname', 'email', 'username', 'age', 'course', 'sex', 'birthday', 'address', 'birthday' , 'year' , 'phone_number'];
+        $requiredFields = ['firstname', 'lastname', 'email', 'username', 'age', 'sex', 'birthday', 'address', 'birthday' , 'year' , 'phone_number'];
         
         foreach ($requiredFields as $field) {
             if (empty(request($field))) {
@@ -45,7 +45,6 @@ class StudentController extends Controller
             "username" => "required|max:40",
             "sex" => "required",
             "age" => "required",
-            "course" => "required",
             "address" => "required",
             "birthday" => "required",
             "year" => "required",
@@ -69,7 +68,6 @@ class StudentController extends Controller
             "name" => $name,
             "email" => $validated["email"],
             "age" => $validated["age"],
-            "course" => $validated["course"],
             "sex" => $validated["sex"],
             "address" => $validated["address"],
             "birthday" => $validated["birthday"],
@@ -85,17 +83,37 @@ class StudentController extends Controller
        
     }
 
-
-
     public function listOfRequestForms() {
 
+        // Array mapping full document names to their abbreviations
+        $documentAbbreviations = [
+            'certificate of grades' => 'cog',
+            'certificate of enrollment' => 'cor',
+            'transcript of records' => 'tor',
+            'original diploma' => 'diploma',
+            'copy of diploma' => 'diploma',
+
+        ];
+       
         $requestForms = RequestedDocument::orderBy('created_at', 'desc')
         ->where('userprofile_id', auth()->user()->userProfile->id)
         ->where('status', 'pending');
 
+    
         if (request()->has('search')) {
             $searchQuery = request()->get('search');
-            $requestForms->where('requested_document', 'like', '%' . $searchQuery . '%');
+            $lowercaseSearchQuery = strtolower($searchQuery);
+            
+            // Check if the search query matches an abbreviation
+            $abbreviation = array_search($lowercaseSearchQuery, array_map('strtolower', $documentAbbreviations));
+            
+            if ($abbreviation !== false) {
+                // If an abbreviation is found, search by the full name
+                $requestForms->where('requested_document', 'like', '%' . $abbreviation . '%');
+            } else {
+                // Otherwise, perform a normal search
+                $requestForms->where('requested_document', 'like', '%' . $searchQuery . '%');
+            }
         }
         
 

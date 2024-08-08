@@ -8,7 +8,7 @@
           {{-- <th class="text-center text-xl p-4 font-semibold">Year</th> --}}
           <th class="text-center text-xl p-4 font-semibold">Requested</th>
           <th class="text-center text-xl p-4 font-semibold">Requested Document</th>
-          <th class="text-center text-xl p-4 font-semibold">Date</th>
+          <th class="text-center text-xl p-4 font-semibold">Status</th>
          
         </tr>
       </thead>
@@ -20,13 +20,13 @@
              <td class="p-3 text-md text-center tracking-wide">{{$form->userProfile->course}}</td>
             <td class="p-3 text-md text-center tracking-wide">{{$form->requested_document}} </td>
             <td class="p-3 text-md text-center tracking-wide">{{ $form->created_at->format('F j, Y') }}</td>
-            <td class="p-4 text-md text-center tracking-wide">
+            <td class="p-4 text-md text-center tracking-wide min-w-40 ">
               @if ($form->status == 'completed')
               <span class="rounded-md p-2 bg-green-500 text-white ">Completed</span>
               @elseif($form->status == 'rejected')
               <span class="rounded-md p-2 bg-red-500 text-white ">Rejected</span>
               @else
-              <span class="rounded-md p-2 bg-orange-500 text-white ">For Deletion</span>
+              <span class="rounded-md p-2 bg-orange-500 text-white tracking-wide ">For Deletion</span>
               @endif
             </td>
             @if ($form->status == 'completed')

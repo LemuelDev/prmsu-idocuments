@@ -14,14 +14,14 @@
         <div class="py-4 flex justify-between items-center max-md:flex-col max-md:justify-center max-md:gap-6">
             <h4 class="font-bold text-2xl text-center max-sm:text-xl">Pending Approvals</h4>
             <form method="GET" class="flex items-center justify-center gap-4">
-                <input type="text" placeholder="Search Name" name="search" id="search" class="py-3 max-sm:py-2  px-6 bg-slate-200  rounded-lg w-full border border-gray-400 focus:border-none focus:outline-none focus:ring-2 focus:ring-green-500">
+                <input type="text" placeholder="Search Name" name="search" id="search" class="py-3 max-sm:py-2  px-6 bg-transparent shadow  rounded-lg w-full border border-gray-400 focus:border-none focus:outline-none focus:ring-2 focus:ring-green-500">
                 <button type="submit" class="py-3 px-6 max-sm:py-2 max-sm:px-4 bg-purple-600 rounded-md outline-none border-none text-white hover:bg-purple-700 ">Search</button>
             </form>
         </div>
 
         @include('admin.tableApprovals')
       
-
+    
     </section>
 
       {{-- success modal --}}

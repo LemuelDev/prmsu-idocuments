@@ -40,17 +40,17 @@
     
                 <div class="p-4 flex items-center gap-4">
                     <label for="username" class="font-bold">USERNAME:</label>
-                    <input type="text" name="username" readonly  class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->username}}">
+                    <input type="text" name="username"  class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->username}}">
                 </div>
     
                 <div class="p-4 flex items-center gap-4">
                     <label for="email" class="font-bold">EMAIL:</label>
-                    <input type="text" name="email" readonly  class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->email}}">
+                    <input type="text" name="email"  class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->email}}">
                 </div>
                 
                 <div class="p-4 flex items-center gap-4">
                     <label for="address" class="font-bold">ADDRESS:</label>
-                    <input type="text" name="address" readonly  class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->address}}">
+                    <input type="text" name="address"  class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->address}}">
                 </div>
                 
                 <div class="p-4 flex items-center gap-4">
@@ -62,7 +62,7 @@
                    <label for="age" class="font-bold">AGE:</label>
                    <input type="text" name="age"  class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->age}}">
                 </div>
- 
+                
                  <div class="p-4 flex items-center gap-4">
                     <label for="sex" class="font-bold">SEX:</label>
                     <select name="sex" id="sex" class="py-3 rounded-md w-full px-6 bg-slate-100 border-black shadow bg-transparent outline-green-500" >

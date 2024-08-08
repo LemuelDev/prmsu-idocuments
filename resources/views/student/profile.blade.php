@@ -71,14 +71,14 @@
                     </select>
                  </div>
 
-                 <div class="p-4 flex items-center gap-4">
+                 {{-- <div class="p-4 flex items-center gap-4">
                     <label for="course" class="font-bold">COURSE:</label>
                     <select name="course" id="course" class="py-3 rounded-md w-full px-6 bg-slate-100 border-black shadow outline-green-500 bg-transparent" >
                         <option value="" disabled selected>Select Course</option>
                         <option value="bs_infotech" {{ auth()->user()->userProfile->course == 'bs_infotech' ? 'selected' : '' }}>BS INFORMATION TECHNOLOGY</option>
                         <option value="bs_fisheries" {{ auth()->user()->userProfile->course == 'bs_fisheries' ? 'selected' : '' }}>BS FISHERIES</option>
                     </select>
-                </div>
+                </div> --}}
 
                 <div class="p-4 flex items-center gap-4">
                     <label for="year" class="font-bold">YEAR:</label>

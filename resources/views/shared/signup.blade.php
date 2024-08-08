@@ -43,11 +43,6 @@
             </div>
     
             <div class="max-[525px]:col-span-2">
-                <label for="username">Username:</label>
-                <input type="text" name="username" id="username" value="{{ old('username') }}" placeholder="Enter username..." class="py-3 rounded-md w-full px-6 bg-slate-100 border-black outline-green-500">
-            </div>
-    
-            <div class="max-[525px]:col-span-2">
                 <label for="email">Email:</label>
                 <input type="text" name="email" id="email" value="{{ old('email') }}" placeholder="Enter Email..." class="py-3 rounded-md w-full px-6 bg-slate-100 border-black outline-green-500">
             </div>
@@ -98,6 +93,11 @@
             <div class="max-[525px]:col-span-2">
                 <label for="phone_number">Number:</label>
                 <input type="number" name="phone_number" id="phone_number" value="{{ old('number') }}" placeholder="Enter your phone number..." class="py-3 rounded-md w-full px-6 bg-slate-100 border-black outline-green-500">
+            </div>
+
+            <div class="max-[525px]:col-span-2">
+                <label for="username">Username:</label>
+                <input type="text" name="username" id="username" value="{{ old('username') }}" placeholder="Enter username..." class="py-3 rounded-md w-full px-6 bg-slate-100 border-black outline-green-500">
             </div>
     
             <div class="max-[525px]:col-span-2">
