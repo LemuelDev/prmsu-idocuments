@@ -26,6 +26,9 @@ return new class extends Migration
             $table->string('birthday');
             $table->string('year');
             $table->string('phone_number');
+            $table->string('avatar')->nullable();
+            $table->boolean('dark_mode')->default(0);
+            $table->string('messenger_color')->nullable();
             $table->string('user_type')->default('student');
             $table->string('user_status')->default('enable');
             $table->string('isPending')->default('pending');

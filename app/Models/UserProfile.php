@@ -22,7 +22,10 @@ class UserProfile extends Model
         'address',
         'birthday',
         'year',
-        'phone_number'
+        'phone_number',
+        'avatar',
+        'dark_mode',
+        'messenger_color'
     ];
 
     protected $table = 'userprofiles';

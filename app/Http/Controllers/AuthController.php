@@ -91,6 +91,7 @@ class AuthController extends Controller
             "birthday" => $validated["birthday"],
             "year" => $validated["year"],
             "phone_number" => $validated["phone_number"],
+            "avatar" => "avatar.png"
         ]);
     
         // Create the user and associate it with the user profile
