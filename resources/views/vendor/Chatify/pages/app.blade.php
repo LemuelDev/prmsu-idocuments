@@ -13,12 +13,10 @@
                     <a href="#" class="listView-x"><i class="fas fa-times"></i></a>
                 </nav>
             </nav>
-            @if (auth()->user()->userProfile->user_type == "admin")
+   
             {{-- Search input --}}
             <input type="text" class="messenger-search" placeholder="Search" />
-            @else 
-            <hr>
-            @endif
+            
             {{-- Tabs --}}
             {{-- <div class="messenger-listView-tabs">
                 <a href="#" class="active-tab" data-view="users">
@@ -31,7 +29,7 @@
            {{-- ---------------- [ User Tab ] ---------------- --}}
            <div class="show messenger-tab users-tab app-scroll" data-view="users">
                {{-- Favorites --}}
-               <div class="favorites-section">
+               <div class="favorites-section" style="display: block;">
                 <p class="messenger-title"><span>Favorites</span></p>
                 <div class="messenger-favorites app-scroll-hidden"></div>
                </div>

@@ -7,14 +7,14 @@
 
     <a href="/messages" class="relative text-sm font-bold sm:hidden">
         <box-icon name='message-rounded-dots'></box-icon>
-        <span class="absolute top-[-13px] right-0 transform translate-x-1/2 -translate-y-1/2 w-7.5 h-2.5 text-red-500 rounded-full">0</span>
+        <span class="absolute top-[-13px] right-0 transform translate-x-1/2 -translate-y-1/2 w-7.5 h-2.5 text-red-500 rounded-full">{{$unreadCount}}</span>
     </a>
     
 
     <div class="flex max-sm:justify-between  gap-4 justify-center items-center ">
         <a href="/messages" class="relative text-lg font-bold max-sm:hidden">
             <box-icon name='message-rounded-dots'></box-icon>
-            <span class="absolute top-[-13px] right-0 transform translate-x-1/2 -translate-y-1/2 w-7.5 h-2.5 text-red-500 rounded-full">0</span>
+            <span class="absolute top-[-13px] right-0 transform translate-x-1/2 -translate-y-1/2 w-7.5 h-2.5 text-red-500 rounded-full">{{$unreadCount}}</span>
         </a>
         <div class="flex items-center justify-center max-lg:px-0 p-1">
             <!-- Profile Dropdown Toggle -->
