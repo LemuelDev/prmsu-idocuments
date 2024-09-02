@@ -68,8 +68,10 @@ return [
     | ahead and set this to a sensible default for you out of the box.
     |
     */
+ 
+    // config/app.php
+    'timezone' => 'Asia/Manila', // Replace with your local timezone
 
-    'timezone' => 'UTC',
 
     /*
     |--------------------------------------------------------------------------

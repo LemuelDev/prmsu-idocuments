@@ -2,24 +2,54 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\BackupJob;
 use App\Mail\ApproveEmail;
 use App\Mail\ApproveRequestDocument;
 use App\Mail\RejectRequest;
 use App\Models\AvailableDocuments;
+use App\Models\Backup;
 use App\Models\Courses;
 use App\Models\RequestedDocument;
 use App\Models\User;
 use App\Models\UserProfile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 class AdminController extends Controller
 {
     
     public function index() {
-       return  view('admin.dashboard');
+
+
+       return  view('admin.dashboard', );
     }
+
+    public function backup() {
+        $lastBackup = Backup::latest('created_at')->first();
+        $lastBackupDate = $lastBackup ? $lastBackup->created_at->format('F j, Y g:i a') : 'No currently backup';
+
+        return  view('admin.backups', compact('lastBackupDate'));
+     }
+     public function createBackup()
+     {
+         try {
+             // Dispatch the BackupJob to the queue
+             BackupJob::dispatch();
+            
+             // Redirect with a success message
+             return redirect()->route('admin.backups')->with('success', 'Backup job has been dispatched successfully.');
+     
+         } catch (\Exception $exception) {
+             // Log the error for debugging purposes
+             Log::error('Failed to dispatch backup job: ' . $exception->getMessage());
+     
+             // Redirect with a failure message
+             return redirect()->route('admin.backups')->with('error', 'Failed to dispatch backup job.');
+         }
+     }
+     
 
     
     public function updatePassword() {

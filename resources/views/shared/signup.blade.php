@@ -1,7 +1,7 @@
 @extends('layout.portal')
 
 @section('content')
-<section class="flex items-center justify-center w-full min-h-screen py-4 bg-mesh-gradient ">
+<section class="flex items-center justify-center w-full min-h-screen pb-4 bg-mesh-gradient ">
     <div class="flex flex-col lg:flex-row max-w-[1400px] h-auto m-auto p-6 max-sm:pt-4">
         <div class="flex-shrink-0 text-center p-7 bg-blue-900 shadow-2xl rounded-xl max-md:px-4 w-full lg:max-w-[600px]">
             <div class="lg:max-h-[400px] lg:pt-16 grid justify-center lg:gap-12 gap-4 w-full pt-0">
@@ -52,11 +52,6 @@
                 <input type="text" name="address" id="address" value="{{ old('address') }}" placeholder="Enter Address..." class="py-3 rounded-md w-full px-6 bg-slate-100 border-black outline-green-500">
             </div>
     
-            <div class="max-[525px]:col-span-2">
-                <label for="age">Age:</label>
-                <input type="number" name="age" id="age" value="{{ old('age') }}" placeholder="Enter your age..." class="py-3 rounded-md w-full px-6 bg-slate-100 border-black outline-green-500">
-            </div>
-    
             <div class="max-[525px]:col-span-2" >
                 <label for="birthday">Birthdate:</label>
                 <input type="date" name="birthday" id="birthday" value="{{ old('birthday') }}" placeholder="Enter your birthday..." class="py-3 rounded-md w-full px-6 bg-slate-100 border-black outline-green-500">
@@ -95,12 +90,12 @@
                 <input type="number" name="phone_number" id="phone_number" value="{{ old('number') }}" placeholder="Enter your phone number..." class="py-3 rounded-md w-full px-6 bg-slate-100 border-black outline-green-500">
             </div>
 
-            <div class="max-[525px]:col-span-2">
+            <div class="max-[525px]:col-span-2"">
                 <label for="username">Username:</label>
                 <input type="text" name="username" id="username" value="{{ old('username') }}" placeholder="Enter username..." class="py-3 rounded-md w-full px-6 bg-slate-100 border-black outline-green-500">
             </div>
     
-            <div class="max-[525px]:col-span-2">
+            <div class="col-span-2">
                 <label for="password">Password:</label>
                 <input type="password" name="password" id="password" placeholder="Enter password..." class="py-3 rounded-md w-full px-6 bg-slate-100 border-black outline-green-500">
                 <span class="text-sm text-gray-500 italic">

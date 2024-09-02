@@ -6,6 +6,7 @@ use App\Mail\WelcomeEmail;
 use App\Models\Courses;
 use App\Models\User;
 use App\Models\UserProfile;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -28,7 +29,7 @@ class AuthController extends Controller
     }
     public function store() {
 
-        $requiredFields = ['lastname', 'firstname', 'email', 'username', 'password', 'age', 'course', 'sex', 'birthday', 'address', 'year' , 'phone_number'];
+        $requiredFields = ['lastname', 'firstname', 'email', 'username', 'password', 'course', 'sex', 'birthday', 'address', 'year' , 'phone_number'];
     
         foreach ($requiredFields as $field) {
             if (empty(request($field))) {
@@ -44,7 +45,6 @@ class AuthController extends Controller
             "email" => "required|email",
             "username" => "required|max:40",
             "sex" => "required",
-            "age" => "required",
             "course" => "required",
             "year" => "required",
             "phone_number" => "required",
@@ -75,6 +75,9 @@ class AuthController extends Controller
         if (!empty($validated["extensionname"])) {
             $name .= ' ' . $validated["extensionname"];
         }
+
+          // Calculate the age using Carbon
+        $age = Carbon::parse($validated['birthday'])->age;
         
         // Create the user profile
         $userProfile = UserProfile::create([
@@ -84,7 +87,7 @@ class AuthController extends Controller
             "extensionname" => $validated["extensionname"],
             "name" => $name,
             "email" => $validated["email"],
-            "age" => $validated["age"],
+            "age" => $age,
             "course" => $validated["course"],
             "sex" => $validated["sex"],
             "address" => $validated["address"],
@@ -110,7 +113,7 @@ class AuthController extends Controller
             $name, // Use concatenated name here
             $validated["username"], 
             $validated["email"], 
-            $validated["age"],
+            $age,
             $validated["course"],
             $validated["year"],
             $validated["sex"],

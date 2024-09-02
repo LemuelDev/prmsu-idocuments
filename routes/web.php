@@ -128,6 +128,11 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/profile/edit', [AdminController::class , 'editProfile'])->name('admin.editProfile');
 
     Route::get('/admin/download-form/{id}', [PdfController::class, 'downloadForm'])->name('admin.download');
+
+    Route::get('/admin/backups', [AdminController::class , 'backup'])->name('admin.backups');
+
+    Route::post('/admin/create/backup', [AdminController::class, 'createBackup'])->name('backup.create');
+
 });
 
 
