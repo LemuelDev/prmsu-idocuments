@@ -17,9 +17,19 @@
             <h4 class="text-center text-black py-4 text-3xl font-bold">NEW PASSWORD</h4>
             <p class="text-center">Enter your email and your new password.</p>
             <input type="text" name="email" id="email" placeholder="Enter email..." class="py-3 w-full px-6 bor-r-8 bg-slate-100 border-black outline-green-500">
+
             <input type="password" name="password" id="password" placeholder="Enter new password..." class="py-3 w-full px-6 bor-r-8 bg-slate-100 border-black outline-green-500">
+            <span class="text-sm text-gray-500 italic">
+                Must contain at least one lowercase letter, one uppercase letter, one number, and one special character.
+            </span>
+
             <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Confirm password..." class="py-3 w-full px-6 bor-r-8 bg-slate-100 border-black outline-green-500">
+            <span class="text-sm text-gray-500 italic">
+                Confirm your password
+             </span>
+             
             <button type="submit" class="py-3 text-xl px-7 border-r-full border-none bg-green-500 text-white rounded-lg w-full">Update Password</button>
+
             <p class="pt-2 text-lg text-center">Don't have any account? <a href="{{route('signup')}}" class="text-lg text-blue-600">Sign Up</a></p>
             <p class="mt-0 text-lg text-center">Already have an account? <a href="{{route('login')}}" class="text-lg text-blue-600">Login</a></p>
             @if (session()->has('failed'))

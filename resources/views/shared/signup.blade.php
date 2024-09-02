@@ -106,6 +106,9 @@
             <div class="max-lg:col-span-2">
                 <label for="password_confirmation">Confirm Password:</label>
                 <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Confirm password..." class="py-3 rounded-md w-full px-6 bg-slate-100 border-black outline-green-500">
+                <span class="text-sm text-gray-500 italic">
+                   Confirm your password
+                </span>
             </div>
     
             <button type="submit" class="py-3 text-xl px-7 bg-green-500 text-white rounded-lg w-full col-span-2 lg:col-span-3">SIGN UP</button>

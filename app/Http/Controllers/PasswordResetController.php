@@ -63,7 +63,16 @@ class PasswordResetController extends Controller
    {
     $request->validate([
         'email' => 'required|email',
-        'password' => 'required|min:8|confirmed', // Laravel will look for 'password_confirmation'
+        "password" => [
+            'required',
+            'string',
+            'min:8',
+            'regex:/[a-z]/', // must contain at least one lowercase letter
+            'regex:/[A-Z]/', // must contain at least one uppercase letter
+            'regex:/[0-9]/', // must contain at least one number
+            'regex:/[@$!%*?&#]/',
+             'confirmed' // must contain a special character
+        ], // Laravel will look for 'password_confirmation'
         'token_user' => 'required'
     ]);
 
