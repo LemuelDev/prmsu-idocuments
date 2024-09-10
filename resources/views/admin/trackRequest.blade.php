@@ -77,10 +77,9 @@
             </div>
 
             @if ($requestDocument->status === 'pending')
-            <div class="grid grid-cols-3 items-center w-full gap-4 py-3 max-sm:grid-cols-1 px-12">
+            <div class="grid grid-cols-2 mx-auto max-w-[700px] items-center w-full gap-4 py-3 max-sm:grid-cols-1 px-12">
                 <a  onclick="toggleModal('approveModal', {{$requestDocument->id}})" class="px-8 py-4 text-white text-center rounded-md bg-green-600 hover:bg-green-700">Approve</a>
                 <a  onclick="toggleModal('rejectModal', {{$requestDocument->id}})" class="px-8 py-4 text-white text-center rounded-md bg-red-600 hover:bg-red-700">Reject</a>
-                <a href="#" class="px-8 py-4 text-white text-center rounded-md bg-purple-600 hover:bg-purple-700">Contact Student</a>
             </div>
             @else
             <form method="POST" action="{{route('admin.deleteRequest', $requestDocument->id)}}" class="max-w-[300px] mx-auto py-3">

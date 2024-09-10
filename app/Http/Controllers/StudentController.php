@@ -336,6 +336,106 @@ class StudentController extends Controller
 
     }
 
+    public function editRequest(RequestedDocument $document) {
+
+        $documents = AvailableDocuments::orderBy('available_documents', 'asc')->get();
+
+        return view("student.editRequest", [
+            "requestDocument" => $document,
+            "documents" => $documents
+        ]);
+    }
+
+    public function updateRequest(RequestedDocument $document) {
+        $validate = request()->validate([          
+            "requested_document" => "required",
+            "num-ctc" => "required",
+            "num-orig" => "required",
+            "purpose" => "required",
+            "birthplace" => "required",
+            "student_number" => "required",
+            "check_graduate" => "required",
+            "last_term"  => "nullable|string|max:40",
+            "last_school_year" => "nullable|string|max:40",
+            "check_correction" => "required",
+            "orig_name"  => "nullable|string|max:40",
+        ]);
+
+
+        if($validate["check_graduate"] === 'Yes' && (!empty($validate["last_term"]) || !empty($validate["last_school_year"])) ){
+            return back()->withErrors(['general' => 'Invalid inputs. Please try again.']);
+        }
+        
+        if ($validate["check_correction"] === 'No' && !empty($validate["orig_name"])){
+            return back()->withErrors(['general' => 'Invalid inputs. Please try again.']);
+        }
+
+
+        if(!empty($validate["last_term"]) && !empty($validate["last_school_year"]) && !empty($validate["orig_name"])){
+            $document->update([
+                "userprofile_id" => auth()->user()->userProfile->id,
+                "requested_document" => $validate["requested_document"],
+                "copies_ctc" => $validate["num-ctc"],
+                "copies_orig" => $validate["num-orig"],
+                "purpose" => $validate["purpose"],
+                "status" => 'pending',
+                "birthplace" =>  $validate["birthplace"],
+                "student_number" =>  $validate["student_number"],
+                "check_graduate" =>  $validate["check_graduate"],
+                "check_correction" => $validate["check_correction"],
+                "last_term" =>  $validate["last_term"],
+                "last_school_year" =>  $validate["last_school_year"],
+                "orig_name" =>  $validate["orig_name"],
+            ]);
+        }elseif(!empty($validate["last_term"]) && !empty($validate["last_school_year"])){
+            $document->update([
+                "userprofile_id" => auth()->user()->userProfile->id,
+                "requested_document" => $validate["requested_document"],
+                "copies_ctc" => $validate["num-ctc"],
+                "copies_orig" => $validate["num-orig"],
+                "purpose" => $validate["purpose"],
+                "status" => 'pending',
+                "birthplace" =>  $validate["birthplace"],
+                "student_number" =>  $validate["student_number"],
+                "check_graduate" =>  $validate["check_graduate"],
+                "check_correction" => $validate["check_correction"],
+                "last_term" =>  $validate["last_term"],
+                "last_school_year" =>  $validate["last_school_year"],
+                
+            ]);
+        }elseif(!empty($validate["orig_name"])){
+            $document->update([
+                "userprofile_id" => auth()->user()->userProfile->id,
+                "requested_document" => $validate["requested_document"],
+                "copies_ctc" => $validate["num-ctc"],
+                "copies_orig" => $validate["num-orig"],
+                "purpose" => $validate["purpose"],
+                "status" => 'pending',
+                "birthplace" =>  $validate["birthplace"],
+                "student_number" =>  $validate["student_number"],
+                "check_graduate" =>  $validate["check_graduate"],
+                "check_correction" => $validate["check_correction"],
+                "orig_name" =>  $validate["orig_name"],
+                
+            ]);
+        }else {
+            $document->update([
+                "userprofile_id" => auth()->user()->userProfile->id,
+                "requested_document" => $validate["requested_document"],
+                "copies_ctc" => $validate["num-ctc"],
+                "copies_orig" => $validate["num-orig"],
+                "purpose" => $validate["purpose"],
+                "status" => 'pending',
+                "birthplace" =>  $validate["birthplace"],
+                "student_number" =>  $validate["student_number"],
+                "check_graduate" =>  $validate["check_graduate"],
+                "check_correction" => $validate["check_correction"],
+            ]);
+        }
+
+        return redirect()->route('student.listOfRequestForms')->with('success', "Updated Successfully");
+    }
+
     public function trackRequest(RequestedDocument $document) {
         
         return view("student.trackRequest", [

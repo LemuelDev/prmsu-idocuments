@@ -176,6 +176,10 @@ Route::middleware(['auth', 'student'])->group(function () {
 
     Route::put('/student/trackRequest/{document}', [StudentController::class , 'deleteRequest'])->name('student.deleteRequest');
 
+    Route::get('/student/trackRequest/{document}/edit', [StudentController::class , 'editRequest'])->name('student.editRequest');
+
+    Route::put('/student/trackRequest/{document}/update', [StudentController::class , 'updateRequest'])->name('student.updateRequest');
+
     Route::get('/student/download-form/{id}', [PdfController::class, 'downloadForm'])->name('student.download');
     
 
