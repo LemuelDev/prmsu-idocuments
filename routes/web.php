@@ -123,6 +123,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::put('/admin/updatePassword/{student}', [AdminController::class , 'changePassword'])->name('admin.changePassword');
 
+    Route::get('/admin/activeUser/update/{id}', [AdminController::class , 'getProfile'])->name('admin.getUserProfile');
+
     Route::put('/admin/profile/{student}', [AdminController::class , 'updateProfile'])->name('admin.updateProfile');
 
     Route::get('/admin/profile/edit', [AdminController::class , 'editProfile'])->name('admin.editProfile');

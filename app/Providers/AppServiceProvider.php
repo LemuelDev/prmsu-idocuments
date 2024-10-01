@@ -39,11 +39,11 @@ class AppServiceProvider extends ServiceProvider
         if (Auth::check()) { // Check if user is authenticated
            if(Auth::user()->userProfile->user_type == "student"){
             $userId = Auth::id(); // Get the current user ID
-            $adminId = 2;
+            $adminIds = UserProfile::where('user_type', 'admin')->pluck('id')->toArray();
             $unreadCount = 0;
 
             // Count unread messages from admin
-            $unreadCount = ChMessage::where('from_id', $adminId)
+            $unreadCount = ChMessage::whereIn('from_id', $adminIds)
                 ->where('to_id', $userId)
                 ->where('seen', false)
                 ->count();
@@ -53,7 +53,7 @@ class AppServiceProvider extends ServiceProvider
             }else {
                 $userId = Auth::id(); // Get the current user ID
                 $unreadCount = 0;
-    
+                
                 // Count unread messages from admin
                 $unreadCount = ChMessage::where('to_id', $userId)
                     ->where('seen', false)

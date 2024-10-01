@@ -1,4 +1,5 @@
-<title>{{ config('chatify.name') }}</title>
+<title>PRMSU {{ config('chatify.name') }}</title>
+<link rel="icon" href="{{ asset('images/prmsu.png') }}" type="image/png">
 
 {{-- Meta tags --}}
 <meta name="viewport" content="width=device-width, initial-scale=1">

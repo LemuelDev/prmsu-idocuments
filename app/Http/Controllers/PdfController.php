@@ -66,14 +66,16 @@ class PdfController extends Controller
                 $pdf->SetXY(170, 52); $pdf->Write(0, $data['extensionname'] ?? '');
                 $pdf->SetXY(85, 65); $pdf->Write(0, $data['birthday']);
                 $pdf->SetXY(135, 65); $pdf->Write(0, $data['birthplace']);
-                $pdf->SetXY(135, 89); $pdf->Write(0, $data['course']);
                 $pdf->SetXY(50, 89); $pdf->Write(0, $data['student_number']);
                 $pdf->SetXY(74, 123); $pdf->Write(0, $data['phone_number']);
                 $pdf->SetXY(138, 123); $pdf->Write(0, $data['email']);
                 $pdf->SetXY(70, 130); $pdf->Write(0, $data['address']);
                 $pdf->SetXY(95, 144); $pdf->Write(0, $data['date_requested']);
-                $pdf->SetXY(155, 112); $pdf->Write(0, $data['last_school_year'] ?? '');
+                $pdf->SetXY(155, 111); $pdf->Write(0, $data['last_school_year'] ?? '');
                 $pdf->SetXY(90, 73); $pdf->Write(0, $data['orig_name'] ?? '');
+
+                $pdf->SetFont('Helvetica', '', 7);
+                $pdf->SetXY(133, 89); $pdf->Write(0, $data['course']);
 
                   // Add check mark based on sex
                 $pdf->SetFont('DejaVuSans', '', 14);

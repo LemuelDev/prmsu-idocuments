@@ -30,7 +30,7 @@
            <div class="show messenger-tab users-tab app-scroll" data-view="users">
                {{-- Favorites --}}
                <div class="favorites-section" style="display: block;">
-                <p class="messenger-title"><span>Favorites</span></p>
+                <p class="messenger-title"><span>Admins</span></p>
                 <div class="messenger-favorites app-scroll-hidden"></div>
                </div>
                {{-- Saved Messages --}}

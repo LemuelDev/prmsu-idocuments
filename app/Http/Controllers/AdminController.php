@@ -39,7 +39,7 @@ class AdminController extends Controller
              BackupJob::dispatch();
             
              // Redirect with a success message
-             return redirect()->route('admin.backups')->with('success', 'Backup job has been dispatched successfully.');
+             return redirect()->route('admin.backups')->with('success', 'Backup completed');
      
          } catch (\Exception $exception) {
              // Log the error for debugging purposes
@@ -165,6 +165,15 @@ class AdminController extends Controller
         ]);
 
 
+    }
+
+    public function getProfile(UserProfile $id){
+        $courses = Courses::orderBy('courses', 'asc')->get();
+
+        return view("admin.updateUser",[
+            "user" => $id,
+            "courses" => $courses
+        ]);
     }
 
 

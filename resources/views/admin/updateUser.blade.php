@@ -77,13 +77,9 @@
 
                 <span class="italic text-lg text-slate-400 text-center md:col-span-2">You can edit only the course of the user.</span>
 
-                 <div class="p-4 flex items-center gap-4 max-w-[700px] mx-auto md:col-span-2 ">
-                    @if ($user->user_status === "enable")
-                        <a href="{{route('admin.disable', $user->id)}}" class="text-white text-md max-sm:text-sm text-center rounded-md px-16 py-3 bg-violet-500 hover:bg-violet-600">Disable</a>
-                    @else
-                        <a href="{{route('admin.enable', $user->id)}}" class="text-white text-md max-sm:text-sm text-center rounded-md px-16 py-3 bg-violet-500 hover:bg-violet-600">Enable</a>
-                    @endif
-                        <a href="{{route('admin.getUserProfile', $user->id)}}"  class="text-white text-md max-sm:text-sm text-center rounded-md px-16 py-3 bg-green-500 hover:bg-green-600">EDIT COURSE</a>
+                 <div class="p-4 flex items-center gap-4 max-w-[400px] mx-auto md:col-span-2 ">
+                    
+                     <button type="submit"  class="text-white text-md max-sm:text-sm text-center rounded-md px-16 py-3 bg-green-500 hover:bg-green-600">UPDATE</button>
                  </div>
 
                  @if ($errors->any())
