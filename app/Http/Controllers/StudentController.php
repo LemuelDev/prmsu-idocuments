@@ -28,7 +28,7 @@ class StudentController extends Controller
 
     public function updateProfile(User $student) {
         
-        $requiredFields = ['firstname', 'lastname', 'email', 'username', 'age', 'sex', 'birthday', 'address', 'birthday' , 'year' , 'phone_number'];
+        $requiredFields = ['firstname', 'lastname', 'email', 'username', 'age', 'sex', 'birthday', 'student_number', 'birthplace' ,'address', 'birthday' , 'year' , 'phone_number'];
         
         foreach ($requiredFields as $field) {
             if (empty(request($field))) {
@@ -47,6 +47,8 @@ class StudentController extends Controller
             "age" => "required",
             "address" => "required",
             "birthday" => "required",
+            "student_number" => "required",
+            "birthplace" => "required",
             "year" => "required",
             "phone_number" => "required",
         ]);
@@ -71,6 +73,8 @@ class StudentController extends Controller
             "sex" => $validated["sex"],
             "address" => $validated["address"],
             "birthday" => $validated["birthday"],
+            "birthplace" => $validated["birthplace"],
+            "student_number" => $validated["student_number"],
             "year" => $validated["year"],
             "phone_number" => $validated["phone_number"],
         ]);
@@ -251,8 +255,6 @@ class StudentController extends Controller
             "num-ctc" => "required",
             "num-orig" => "required",
             "purpose" => "required",
-            "birthplace" => "required",
-            "student_number" => "required",
             "check_graduate" => "required",
             "last_term"  => "nullable|string|max:40",
             "last_school_year" => "nullable|string|max:40",
@@ -278,8 +280,6 @@ class StudentController extends Controller
                 "copies_orig" => $validate["num-orig"],
                 "purpose" => $validate["purpose"],
                 "status" => 'pending',
-                "birthplace" =>  $validate["birthplace"],
-                "student_number" =>  $validate["student_number"],
                 "check_graduate" =>  $validate["check_graduate"],
                 "check_correction" => $validate["check_correction"],
                 "last_term" =>  $validate["last_term"],
@@ -294,8 +294,6 @@ class StudentController extends Controller
                 "copies_orig" => $validate["num-orig"],
                 "purpose" => $validate["purpose"],
                 "status" => 'pending',
-                "birthplace" =>  $validate["birthplace"],
-                "student_number" =>  $validate["student_number"],
                 "check_graduate" =>  $validate["check_graduate"],
                 "check_correction" => $validate["check_correction"],
                 "last_term" =>  $validate["last_term"],
@@ -310,8 +308,6 @@ class StudentController extends Controller
                 "copies_orig" => $validate["num-orig"],
                 "purpose" => $validate["purpose"],
                 "status" => 'pending',
-                "birthplace" =>  $validate["birthplace"],
-                "student_number" =>  $validate["student_number"],
                 "check_graduate" =>  $validate["check_graduate"],
                 "check_correction" => $validate["check_correction"],
                 "orig_name" =>  $validate["orig_name"],
@@ -325,8 +321,6 @@ class StudentController extends Controller
                 "copies_orig" => $validate["num-orig"],
                 "purpose" => $validate["purpose"],
                 "status" => 'pending',
-                "birthplace" =>  $validate["birthplace"],
-                "student_number" =>  $validate["student_number"],
                 "check_graduate" =>  $validate["check_graduate"],
                 "check_correction" => $validate["check_correction"],
             ]);
@@ -352,8 +346,6 @@ class StudentController extends Controller
             "num-ctc" => "required",
             "num-orig" => "required",
             "purpose" => "required",
-            "birthplace" => "required",
-            "student_number" => "required",
             "check_graduate" => "required",
             "last_term"  => "nullable|string|max:40",
             "last_school_year" => "nullable|string|max:40",
@@ -379,8 +371,6 @@ class StudentController extends Controller
                 "copies_orig" => $validate["num-orig"],
                 "purpose" => $validate["purpose"],
                 "status" => 'pending',
-                "birthplace" =>  $validate["birthplace"],
-                "student_number" =>  $validate["student_number"],
                 "check_graduate" =>  $validate["check_graduate"],
                 "check_correction" => $validate["check_correction"],
                 "last_term" =>  $validate["last_term"],
@@ -395,8 +385,6 @@ class StudentController extends Controller
                 "copies_orig" => $validate["num-orig"],
                 "purpose" => $validate["purpose"],
                 "status" => 'pending',
-                "birthplace" =>  $validate["birthplace"],
-                "student_number" =>  $validate["student_number"],
                 "check_graduate" =>  $validate["check_graduate"],
                 "check_correction" => $validate["check_correction"],
                 "last_term" =>  $validate["last_term"],
@@ -411,8 +399,6 @@ class StudentController extends Controller
                 "copies_orig" => $validate["num-orig"],
                 "purpose" => $validate["purpose"],
                 "status" => 'pending',
-                "birthplace" =>  $validate["birthplace"],
-                "student_number" =>  $validate["student_number"],
                 "check_graduate" =>  $validate["check_graduate"],
                 "check_correction" => $validate["check_correction"],
                 "orig_name" =>  $validate["orig_name"],
@@ -426,8 +412,6 @@ class StudentController extends Controller
                 "copies_orig" => $validate["num-orig"],
                 "purpose" => $validate["purpose"],
                 "status" => 'pending',
-                "birthplace" =>  $validate["birthplace"],
-                "student_number" =>  $validate["student_number"],
                 "check_graduate" =>  $validate["check_graduate"],
                 "check_correction" => $validate["check_correction"],
             ]);

@@ -29,7 +29,7 @@ class AuthController extends Controller
     }
     public function store() {
 
-        $requiredFields = ['lastname', 'firstname', 'email', 'username', 'password', 'course', 'sex', 'birthday', 'address', 'year' , 'phone_number'];
+        $requiredFields = ['lastname', 'firstname', 'email', 'username', 'password', 'student_number', 'birthplace' ,'course', 'sex', 'birthday', 'address', 'year' , 'phone_number'];
     
         foreach ($requiredFields as $field) {
             if (empty(request($field))) {
@@ -50,6 +50,8 @@ class AuthController extends Controller
             "phone_number" => "required",
             "address" => "required",
             "birthday" => "required",
+            "birthplace"  => "required",
+            "student_number"  => "required",
             "password" => [
                 'required',
                 'string',
@@ -92,6 +94,8 @@ class AuthController extends Controller
             "sex" => $validated["sex"],
             "address" => $validated["address"],
             "birthday" => $validated["birthday"],
+            "birthplace" => $validated["birthplace"],
+            "student_number" => $validated["student_number"],
             "year" => $validated["year"],
             "phone_number" => $validated["phone_number"],
             "avatar" => "avatar.png"

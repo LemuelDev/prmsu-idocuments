@@ -26,6 +26,8 @@ return new class extends Migration
             $table->string('birthday');
             $table->string('year');
             $table->string('phone_number');
+            $table->string('birthplace');
+            $table->string('student_number');
             $table->string('avatar')->nullable();
             $table->boolean('dark_mode')->default(0);
             $table->string('messenger_color')->nullable();

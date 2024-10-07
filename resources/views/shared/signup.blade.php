@@ -21,22 +21,22 @@
     
             <div class="max-[525px]:col-span-2">
                 <label for="firstname">Firstname:</label>
-                <input type="text" name="firstname" id="name" value="{{ old('firstname') }}" placeholder="Enter your first name..." class="py-3 rounded-md w-full px-6 bg-slate-100 border-black outline-green-500">
+                <input type="text" name="firstname" id="name" value="{{ old('firstname') }}"  class="py-3 rounded-md w-full px-6 bg-slate-100 border-black outline-green-500">
             </div>
             <div class="max-[525px]:col-span-2">
                 <label for="lastname">Lastname:</label>
-                <input type="text" name="lastname" id="name" value="{{ old('lastname') }}" placeholder="Enter your last name..." class="py-3 rounded-md w-full px-6 bg-slate-100 border-black outline-green-500">
+                <input type="text" name="lastname" id="name" value="{{ old('lastname') }}"  class="py-3 rounded-md w-full px-6 bg-slate-100 border-black outline-green-500">
             </div>
             <div class="max-[525px]:col-span-2">
                 <label for="middlename">Middlename:</label>
-                <input type="text" name="middlename" id="name" value="{{ old('middlename') }}" placeholder="Enter your full name..." class="py-3 rounded-md w-full px-6 bg-slate-100 border-black outline-green-500">
+                <input type="text" name="middlename" id="name" value="{{ old('middlename') }}"  class="py-3 rounded-md w-full px-6 bg-slate-100 border-black outline-green-500">
                 <span class="text-sm text-gray-500 italic">
                    (Optional)
                 </span>
             </div>
             <div class="max-[525px]:col-span-2">
                 <label for="extensionname">Extension Name:</label>
-                <input type="text" name="extensionname" id="name" value="{{ old('extensionname') }}" placeholder="Enter your full name..." class="py-3 rounded-md w-full px-6 bg-slate-100 border-black outline-green-500">           
+                <input type="text" name="extensionname" id="name" value="{{ old('extensionname') }}" class="py-3 rounded-md w-full px-6 bg-slate-100 border-black outline-green-500">           
                 <span class="text-sm text-gray-500 italic">
                     (E.g, jr, sr,)
                  </span>
@@ -44,18 +44,29 @@
     
             <div class="max-[525px]:col-span-2">
                 <label for="email">Email:</label>
-                <input type="text" name="email" id="email" value="{{ old('email') }}" placeholder="Enter Email..." class="py-3 rounded-md w-full px-6 bg-slate-100 border-black outline-green-500">
+                <input type="text" name="email" id="email" value="{{ old('email') }}"  class="py-3 rounded-md w-full px-6 bg-slate-100 border-black outline-green-500">
+            </div>
+
+            <div class="max-[525px]:col-span-2">
+                <label for="student_number">Student Number:</label>
+                <input type="text" name="student_number" id="student_number" value="{{ old('student_number') }}"  class="py-3 rounded-md w-full px-6 bg-slate-100 border-black outline-green-500">
             </div>
     
             <div class="max-[525px]:col-span-2">
                 <label for="address">Address:</label>
-                <input type="text" name="address" id="address" value="{{ old('address') }}" placeholder="Enter Address..." class="py-3 rounded-md w-full px-6 bg-slate-100 border-black outline-green-500">
+                <input type="text" name="address" id="address" value="{{ old('address') }}"  class="py-3 rounded-md w-full px-6 bg-slate-100 border-black outline-green-500">
             </div>
     
             <div class="max-[525px]:col-span-2" >
                 <label for="birthday">Birthdate:</label>
-                <input type="date" name="birthday" id="birthday" value="{{ old('birthday') }}" placeholder="Enter your birthday..." class="py-3 rounded-md w-full px-6 bg-slate-100 border-black outline-green-500">
+                <input type="date" name="birthday" id="birthday" value="{{ old('birthday') }}" class="py-3 rounded-md w-full px-6 bg-slate-100 border-black outline-green-500">
             </div>
+
+            <div class="max-[525px]:col-span-2">
+                <label for="birthplace">Birthplace:</label>
+                <input type="text" name="birthplace" id="birthplace" value="{{ old('birthplace') }}" class="py-3 rounded-md w-full px-6 bg-slate-100 border-black outline-green-500">
+            </div>
+
             <div class="max-[525px]:col-span-2">
                 <label for="sex">SEX:</label>
                 <select name="sex" id="sex" class="py-3 rounded-md w-full px-6 bg-slate-100 border-black outline-green-500">
@@ -87,17 +98,17 @@
             </div>
             <div class="max-[525px]:col-span-2">
                 <label for="phone_number">Number:</label>
-                <input type="number" name="phone_number" id="phone_number" value="{{ old('number') }}" placeholder="Enter your phone number..." class="py-3 rounded-md w-full px-6 bg-slate-100 border-black outline-green-500">
+                <input type="number" name="phone_number" id="phone_number" value="{{ old('number') }}"  class="py-3 rounded-md w-full px-6 bg-slate-100 border-black outline-green-500">
             </div>
 
-            <div class="max-[525px]:col-span-2"">
+            <div class="col-span-2"">
                 <label for="username">Username:</label>
-                <input type="text" name="username" id="username" value="{{ old('username') }}" placeholder="Enter username..." class="py-3 rounded-md w-full px-6 bg-slate-100 border-black outline-green-500">
+                <input type="text" name="username" id="username" value="{{ old('username') }}"  class="py-3 rounded-md w-full px-6 bg-slate-100 border-black outline-green-500">
             </div>
     
             <div class="col-span-2">
                 <label for="password">Password:</label>
-                <input type="password" name="password" id="password" placeholder="Enter password..." class="py-3 rounded-md w-full px-6 bg-slate-100 border-black outline-green-500">
+                <input type="password" name="password" id="password"  class="py-3 rounded-md w-full px-6 bg-slate-100 border-black outline-green-500">
                 <span class="text-sm text-gray-500 italic">
                     Must contain at least one lowercase letter, one uppercase letter, one number, and one special character.
                 </span>
@@ -105,7 +116,7 @@
             
             <div class="max-lg:col-span-2">
                 <label for="password_confirmation">Confirm Password:</label>
-                <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Confirm password..." class="py-3 rounded-md w-full px-6 bg-slate-100 border-black outline-green-500">
+                <input type="password" name="password_confirmation" id="password_confirmation" class="py-3 rounded-md w-full px-6 bg-slate-100 border-black outline-green-500">
                 <span class="text-sm text-gray-500 italic">
                    Confirm your password
                 </span>

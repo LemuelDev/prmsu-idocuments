@@ -13,10 +13,25 @@
     <section class="xl:max-w-[1300px] 2xl:max-w-[1500px] mx-auto p-4 w-full px-16 max-lg:px-4">
         <div class="py-4 flex justify-between items-center max-md:flex-col max-md:justify-center max-md:gap-6">
             <h4 class="font-bold text-2xl text-center max-sm:text-xl">Pending Approvals</h4>
-            <form method="GET" class="flex items-center justify-center gap-4">
-                <input type="text" placeholder="Search Name" name="search" id="search" class="py-3 max-sm:py-2  px-6 bg-transparent shadow  rounded-lg w-full border border-gray-400 focus:border-none focus:outline-none focus:ring-2 focus:ring-green-500">
-                <button type="submit" class="py-3 px-6 max-sm:py-2 max-sm:px-4 bg-purple-600 rounded-md outline-none border-none text-white hover:bg-purple-700 ">Search</button>
-            </form>
+            <div class="flex gap-3">
+                <form method="GET" class="flex items-center justify-center gap-4">
+                    <input type="text" placeholder="Search Name" name="search" id="search" class="py-3 max-sm:py-2  px-6 bg-transparent shadow  rounded-lg w-full border border-gray-400 focus:border-none focus:outline-none focus:ring-2 focus:ring-green-500">
+                    <button type="submit" class="py-3 px-6 max-sm:py-2 max-sm:px-4 bg-purple-600 rounded-md outline-none border-none text-white hover:bg-purple-700 ">Search</button>
+                </form>
+                <select name="sort" id="sort" class="py-3 px-6 rounded-md border-none outline-none shadow bg-transparent">
+                    <option value="{{ route('admin.approvals') }}" {{ request()->url() == route('admin.approvals') ? 'selected' : '' }}>Approvals</option>
+                    <option value="{{ route('admin.activeUsers') }}" {{ request()->url() == route('admin.activeUsers') ? 'selected' : '' }}>ActiveUsers</option>
+                </select>
+            </div>
+
+            <script>
+                document.getElementById("sort").addEventListener("change", function() {
+                    var selectedValue = this.value;
+                    if (selectedValue) {
+                        window.location.href = selectedValue;
+                    }
+                });
+            </script>
         </div>
 
         @include('admin.tableApprovals')

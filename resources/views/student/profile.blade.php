@@ -48,6 +48,11 @@
                 </div>
                 
                 <div class="p-4 flex items-center gap-4">
+                    <label for="student_number" class="font-bold">Student Number:</label>
+                    <input type="text" name="student_number"  class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->student_number}}">
+                 </div>
+
+                <div class="p-4 flex items-center gap-4">
                     <label for="address" class="font-bold">ADDRESS:</label>
                     <input type="text" name="address"  class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->address}}">
                 </div>
@@ -55,6 +60,11 @@
                 <div class="p-4 flex items-center gap-4">
                     <label for="birthday" class="font-bold">BIRTHDAY:</label>
                     <input type="date" name="birthday"  class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->birthday}}">
+                 </div>
+
+                 <div class="p-4 flex items-center gap-4">
+                    <label for="birthplace" class="font-bold">BIRTHPLACE:</label>
+                    <input type="text" name="birthplace"  class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->birthplace}}">
                  </div>
                 
                 <div class="p-4 flex items-center gap-4">
@@ -154,6 +164,11 @@
                  <label for="email" class="font-bold">EMAIL:</label>
                  <input type="text" name="email" readonly  class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->email}}">
              </div>
+
+             <div class="p-4 flex items-center gap-4">
+                <label for="student_number" class="font-bold">Student Number:</label>
+                <input type="text" name="student_number" readonly  class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->student_number}}">
+             </div>
              
              <div class="p-4 flex items-center gap-4">
                  <label for="address" class="font-bold">ADDRESS:</label>
@@ -167,7 +182,12 @@
 
              <div class="p-4 flex items-center gap-4">
                 <label for="birthday" class="font-bold">BIRTHDAY:</label>
-                <input type="text" name="birthday"  class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->birthday}}">
+                <input type="text" name="birthday" readonly   class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->birthday}}">
+             </div>
+
+             <div class="p-4 flex items-center gap-4">
+                <label for="birthplace" class="font-bold">BIRTHPLACE:</label>
+                <input type="text" name="birthplace" readonly   class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->birthplace}}">
              </div>
 
              <div class="p-4 flex items-center gap-4">

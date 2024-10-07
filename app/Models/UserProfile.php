@@ -23,6 +23,8 @@ class UserProfile extends Model
         'birthday',
         'year',
         'phone_number',
+        'birthplace',
+        'student_number',
         'avatar',
         'dark_mode',
         'messenger_color'

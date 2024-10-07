@@ -62,18 +62,6 @@
                     <label for="purpose" class="font-bold text-md">Purpose of Request:</label>
                     <input type="text" placeholder="Enter purpose here" value="{{$requestDocument->purpose}}" name="purpose" id="purpose" class="placeholder-slate-600 px-6  py-3 w-full rounded-md shadow bg-transparent border-none outline-none focus:ring-2 focus:ring-green-600">
                 </div>
-
-                
-                <div class="p-4 flex items-center gap-4">
-                    <label for="birthplace" class="font-bold text-md">Birthplace:</label>
-                    <input type="text" placeholder="Enter birthplace here" value="{{$requestDocument->birthplace}}" name="birthplace" id="birthplace" class="placeholder-slate-600 px-6  py-3 w-full rounded-md shadow bg-transparent border-none outline-none focus:ring-2 focus:ring-green-600">
-                </div>
-
-                <div class="p-4 flex items-center gap-4">
-                    <label for="student_number" class="font-bold text-md">Student number:</label>
-                    <input type="text" placeholder="Enter student number " value="{{$requestDocument->student_number}} " name="student_number" id="student_number" class="placeholder-slate-600 px-6  py-3 w-full rounded-md shadow bg-transparent border-none outline-none focus:ring-2 focus:ring-green-600">
-                </div>
-
                 <div class="p-4 flex items-center gap-4">
                     <label for="purpose" class="font-bold text-md">Did you graduate from PRMSU?</label>
                     <select name="check_graduate" id="check_graduate" class="py-3 px-6 rounded-md border-none w-full outline-none shadow bg-transparent">

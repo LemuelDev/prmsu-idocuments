@@ -20,7 +20,7 @@
             <span class="text-2xl"><box-icon name='history' type='solid' color='#ffffff'></box-icon></span>History of Request</a>
             
             <a href="{{route('student.profile')}}" class="text-xl max-md:text-lg max-md:px-12 max-lg:text-lg max-lg:px-4  max-sm:px-9 font-bold px-16 py-20 flex flex-col items-center justify-center rounded-xl shadow-2xl bg-[#405D72] hover:bg-[#2d4657] text-white">
-            <span class="text-2xl"><box-icon type='solid' name='user' color='#ffffff'></box-icon></span>Profiles</a>
+            <span class="text-2xl"><box-icon type='solid' name='user' color='#ffffff'></box-icon></span>Profile</a>
             
         </div>
 

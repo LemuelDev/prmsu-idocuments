@@ -18,7 +18,7 @@
                     <input type="text" placeholder="Search Name" name="search" id="search" class="py-3 max-sm:py-2  px-6 shadow bg-transparent rounded-lg w-full border border-gray-400 focus:border-none focus:outline-none focus:ring-2 focus:ring-green-500">
                     <button type="submit" class="py-3 px-6 max-sm:py-2 max-sm:px-4 bg-purple-600 rounded-md outline-none border-none text-white hover:bg-purple-700 ">Search</button>
                 </form>
-                <form method="GET" action="{{ route('admin.activeUsers') }}" class="flex flex-col gap-2 max-w-[300px] sm:max-w-[200px]">
+                <form method="GET" action="{{ route('admin.activeUsers') }}" class="flex flex-col align-top gap-2 max-w-[300px] sm:max-w-[200px]">
                     <select name="sortCourse" id="sortCourse" class="py-1 px-1 shadow bg-transparent rounded-md" onchange="this.form.submit()">
                         @forelse ($courses as $course)
                             <option value="{{ $course->courses }}" {{ request('sortCourse') == $course->courses ? 'selected' : '' }}>{{ $course->courses }}</option>
@@ -34,8 +34,19 @@
                         <option value="3" {{ request('sortYear') == "3" ? 'selected' : '' }}>3</option>
                         <option value="4" {{ request('sortYear') == "4" ? 'selected' : '' }}>4</option>
                     </select>
+                    <select name="sort" id="sort" class="py-1 px-1 rounded-md border-none outline-none shadow bg-transparent">
+                        <option value="{{ route('admin.approvals') }}" {{ request()->url() == route('admin.approvals') ? 'selected' : '' }}>Approvals</option>
+                        <option value="{{ route('admin.activeUsers') }}" {{ request()->url() == route('admin.activeUsers') ? 'selected' : '' }}>ActiveUsers</option>
+                    </select>
                 </form>
-                
+                <script>
+                    document.getElementById("sort").addEventListener("change", function() {
+                        var selectedValue = this.value;
+                        if (selectedValue) {
+                            window.location.href = selectedValue;
+                        }
+                    });
+                </script>
             </div>
         </div>
 

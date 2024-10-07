@@ -18,8 +18,6 @@ return new class extends Migration
             $table->string('copies_orig');
             $table->string('status');
             $table->string('purpose');
-            $table->string('birthplace');
-            $table->string('student_number');
             $table->string('check_graduate');
             $table->string('last_term')->nullable();
             $table->string('last_school_year')->nullable();

@@ -20,16 +20,16 @@
                 <span class="text-2xl"><box-icon name='notepad' type='solid' color='#ffffff' ></box-icon></span>Manage Courses</a>
 
             <a href="{{route('admin.approvals')}}" class="text-xl max-md:text-lg max-md:px-12 max-lg:px-18 max-sm:px-9  font-bold px-16 py-20 flex flex-col items-center justify-center rounded-xl shadow-2xl bg-[#009FBD] hover:bg-[#2f899b] text-white">
-            <span class="text-2xl"><box-icon name='user-check' type='solid' color='#ffffff' ></box-icon></span>Approvals</a>
+            <span class="text-2xl"><box-icon name='user-check' type='solid' color='#ffffff' ></box-icon></span>Accounts</a>
 
-            <a href="{{route('admin.activeUsers')}}" class="text-xl max-md:text-lg max-md:px-12 max-lg:px-18 max-sm:px-9  font-bold px-16 py-20 flex flex-col items-center justify-center rounded-xl shadow-2xl bg-[#44de6d] hover:bg-[#33a250] text-white">
-            <span class="text-2xl"><box-icon name='user-check' type='solid' color='#ffffff' ></box-icon></span>Active Users</a>
+            {{-- <a href="{{route('admin.activeUsers')}}" class="text-xl max-md:text-lg max-md:px-12 max-lg:px-18 max-sm:px-9  font-bold px-16 py-20 flex flex-col items-center justify-center rounded-xl shadow-2xl bg-[#44de6d] hover:bg-[#33a250] text-white">
+            <span class="text-2xl"><box-icon name='user-check' type='solid' color='#ffffff' ></box-icon></span>Active Users</a> --}}
 
-            <a href="{{route('admin.requestLogs')}}" class="text-xl max-md:text-lg max-md:px-12 max-lg:px-18 max-sm:px-9  font-bold px-16 py-20 flex flex-col items-center justify-center rounded-xl shadow-2xl bg-[#987D9A] hover:bg-[#806083] text-white">
+            <a href="{{route('admin.requestLogs')}}" class="text-xl max-md:text-lg max-md:px-12 max-lg:px-18 max-sm:px-9  font-bold px-16 py-20 flex flex-col items-center justify-center rounded-xl shadow-2xl bg-[#44de6d] hover:bg-[#33a250] text-white">
             <span class="text-2xl"><box-icon name='user-check' type='solid' color='#ffffff' ></box-icon></span>Request Logs</a>
             
             <a href="{{route('admin.profile')}}" class="text-xl max-md:text-lg max-md:px-12 max-lg:px-18  max-sm:px-9 font-bold px-16 py-20 flex flex-col items-center justify-center rounded-xl shadow-2xl bg-[#405D72] hover:bg-[#2d4657] text-white">
-            <span class="text-2xl"><box-icon type='solid' name='user' color='#ffffff'></box-icon></span>Profiles</a>
+            <span class="text-2xl"><box-icon type='solid' name='user' color='#ffffff'></box-icon></span>Profile</a>
             
 
         </div>

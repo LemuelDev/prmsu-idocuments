@@ -16,8 +16,6 @@ class RequestedDocument extends Model
        'copies_orig',
        'purpose',
        'status',
-       'birthplace',
-       'student_number',
        'check_graduate',
        'last_term',
        'last_school_year',

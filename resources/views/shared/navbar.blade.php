@@ -50,25 +50,25 @@
                          <!-- Profile Link -->
                          <li>
                              @if (auth()->user()->userProfile->user_type === 'admin' )
-                             <a href="{{route('admin.profile')}}" class="flex items-center cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                             {{-- <a href="{{route('admin.profile')}}" class="flex items-center cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                                  <box-icon name='user' class="inline-block mr-2 mt-2"></box-icon>
                                  <span class="pt-3">
                                      Profile
                                  </span>
-                              </a>
+                              </a> --}}
                               <a href="{{route('admin.backups')}}" class="flex items-center cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                                 <box-icon name='cog' class="inline-block mr-2 mt-2"></box-icon>
                                 <span class="pt-3">
                                     Backups
                                 </span>
                              </a>
-                             @else
-                             <a href="{{route('student.profile')}}" class="flex items-center cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                             {{-- @else --}}
+                             {{-- <a href="{{route('student.profile')}}" class="flex items-center cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                                  <box-icon name='user' class="inline-block mr-2 mt-2"></box-icon>
                                  <span class="pt-3">
                                      Profile
                                  </span>
-                             </a>
+                             </a> --}}
                                  
                              @endif
                            
