@@ -29,6 +29,9 @@
                 @endif
             
                 <h4 class="text-right py-4 pr-6 font-bold text-lg">-ADMIN</h4>
+                <div class="flex justify-end">
+                <a href="/" class='text-white bg-green-500 hover:bg-green-600 rounded-lg shadow px-8 py-2 text-xl'>Login</a>
+                </div>
             </div>
             <div>
                 <img src="/images/register-img.png" alt="" class="w-full max-h-[400px] rounded-lg">

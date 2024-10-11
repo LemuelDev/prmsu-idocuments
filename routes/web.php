@@ -117,7 +117,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::get('/admin/trackRequest/approve/{document}', [AdminController::class , 'approveRequest'])->name('admin.approveRequest');
     
-    Route::get('/admin/trackRequest/reject/{document}', [AdminController::class, 'rejectRequest'])->name('admin.rejectRequest');
+    Route::post('/admin/trackRequest/reject/{document}', [AdminController::class, 'rejectRequest'])->name('admin.rejectRequest');
 
     Route::get('/admin/updatePassword', [AdminController::class , 'updatePassword'])->name('admin.updatePassword');
 

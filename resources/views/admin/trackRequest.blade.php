@@ -96,24 +96,23 @@
                 const modal = document.getElementById(modalId);
                 modal.classList.toggle('hidden');
                 modal.classList.toggle('flex');
-    
-                if (documentId) {
-                    const approveButton = modal.querySelector('#approve-button');
-                    const rejectButton = modal.querySelector('#reject-button');
-    
-                    
-                if (approveButton) {
-                    const approveUrl = `/admin/trackRequest/approve/${documentId}`;
-                    approveButton.href = approveUrl;
-                }
 
-                if (rejectButton) {
-                    const rejectUrl = `/admin/trackRequest/reject/${documentId}`;
-                    rejectButton.href = rejectUrl;
-                }
+                if (documentId) {
+                    if (modalId === 'approveModal') {
+                        const approveButton = modal.querySelector('#approve-button');
+                        const approveUrl = `/admin/trackRequest/approve/${documentId}`;
+                        approveButton.href = approveUrl;
+                    }
+
+                    if (modalId === 'rejectModal') {
+                        const rejectForm = modal.querySelector('form');
+                        const rejectUrl = `/admin/trackRequest/reject/${documentId}`;
+                        rejectForm.action = rejectUrl;
+                    }
                 }
             }
-        </script>
+
+    </script>
 
        <!-- Approve Modal -->
         <div id="approveModal" class="fixed inset-0  items-center justify-center bg-black bg-opacity-50 hidden">
@@ -128,14 +127,25 @@
         </div>
 
         <!-- Reject Modal -->
-        <div id="rejectModal" class="fixed inset-0  items-center justify-center bg-black bg-opacity-50 hidden">
+        <div id="rejectModal" class="fixed inset-0 items-center justify-center bg-black bg-opacity-50 hidden">
             <div class="bg-white rounded-lg p-6 max-w-sm w-full">
                 <h2 class="text-xl font-semibold mb-4">Confirm Rejection</h2>
-                <p class="mb-4">Are you sure you want to reject this request?</p>
-                <div class="flex justify-end">
-                    <button onclick="toggleModal('rejectModal')" class="px-4 py-2 bg-gray-300 text-gray-800 rounded-md mr-2">Cancel</button>
-                    <a href="#" id="reject-button" class="px-4 py-2 bg-red-600 text-white rounded-md">Reject</a>
-                </div>
+                <p class="mb-4">Please provide a reason for rejection:</p>
+                <form method="POST" action="">
+                    @csrf
+                    <div class="grid mb-4">
+                        <textarea name="reason" id="reason" class="rounded-lg shadow p-4 border-2 border-gray-400"></textarea>
+                    </div>
+                    <div class="flex justify-end">
+                        <button type="button" onclick="toggleModal('rejectModal')" 
+                                class="px-4 py-2 bg-gray-300 text-gray-800 rounded-md mr-2">
+                            Cancel
+                        </button>
+                        <button type="submit" class="px-4 py-2 bg-red-600 text-white rounded-md">
+                            Reject
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
 

@@ -42,7 +42,7 @@ class AuthController extends Controller
             "firstname" => "required|string|max:40",
             "middlename" => "nullable|string|max:40",
             "extensionname" => "nullable|string|max:40",
-            "email" => "required|email",
+            "email" => "required|email|unique:userprofiles,email", // Ensuring the email is unique
             "username" => "required|max:40",
             "sex" => "required",
             "course" => "required",
@@ -62,9 +62,10 @@ class AuthController extends Controller
                 'regex:/[@$!%*?&#]/' // must contain a special character
             ],
         ], [
-            'password.regex' => 'Password must contain at least one lowercase letter, one uppercase letter, one number, and one special character.'
+            'password.regex' => 'Password must contain at least one lowercase letter, one uppercase letter, one number, and one special character.',
+            'email.unique' => 'This email is already registered.' // Custom error message for unique email validation
         ]);
-
+        
         // Check if email already exists in users table
         
 

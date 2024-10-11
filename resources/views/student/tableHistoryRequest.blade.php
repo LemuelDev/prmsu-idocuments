@@ -25,7 +25,14 @@
               </td>
               @if ($form->status == 'completed')
               <td class="p-3 text-md text-center tracking-wide"><a href="{{route('student.download', $form->id)}}" class=""><span class="text-xl"><box-icon type='solid' name='download'></box-icon></span></a></td>
-              @endif
+              @elseif ($form->status == 'rejected')
+              <td class="p-3 text-md text-center tracking-wide">
+                  <a onclick="toggleModal('rejectModal', '{{ $form->reject_reason }}')" 
+                      class="px-4 py-2 text-white text-center rounded-md bg-red-500 hover:bg-red-600 cursor-pointer">
+                      Check
+                  </a>
+              </td>
+            @endif
             </tr>
           @empty
           <div class="text-center ">

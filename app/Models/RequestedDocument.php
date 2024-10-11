@@ -20,7 +20,8 @@ class RequestedDocument extends Model
        'last_term',
        'last_school_year',
        'check_correction',
-       'orig_name'
+       'orig_name',
+       'reject_reason'
     ];
 
     protected $table = 'requesteddocuments';

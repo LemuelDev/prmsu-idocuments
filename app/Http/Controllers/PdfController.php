@@ -42,7 +42,8 @@ class PdfController extends Controller
         ];
     
       // Path to your PDF template
-        $templatePath = storage_path('app/template/request_document_format.pdf'); // Adjust path as needed
+      $templatePath = public_path('templates/request_document_format.pdf');
+
 
         $pdf = new Fpdi();
         $pageCount = $pdf->setSourceFile($templatePath);

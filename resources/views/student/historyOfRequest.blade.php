@@ -35,6 +35,32 @@
             </script>
 
         @include('student.tableHistoryRequest')
+
+        <script>
+            function toggleModal(modalId, reason = null) {
+                const modal = document.getElementById(modalId);
+                modal.classList.toggle('hidden');
+                modal.classList.toggle('flex');
+
+                if (reason && modalId === 'rejectModal') {
+                    const reasonElement = modal.querySelector('#reason-p');
+                    reasonElement.textContent = reason;
+                }
+            }
+        </script>
+
+
+
+        <!-- Reject Reason Modal -->
+        <div id="rejectModal" class="fixed inset-0 items-center justify-center bg-black bg-opacity-50 hidden">
+            <div class="bg-white rounded-lg p-6 max-w-sm w-full">
+                <h2 class="text-xl font-semibold mb-4">Reason for Rejection</h2>
+                <p class="mb-4 text-center" id="reason-p"></p>
+                <div class="flex justify-end">
+                    <button onclick="toggleModal('rejectModal')" class="px-4 py-2 bg-gray-300 text-gray-800 rounded-md mr-2">Close</button>
+                </div>
+            </div>
+        </div>
         
 
     </section>

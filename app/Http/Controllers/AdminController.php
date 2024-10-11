@@ -105,8 +105,13 @@ class AdminController extends Controller
     }
 
     public function rejectRequest(RequestedDocument $document) {
+
+        $validated = request()->validate([
+            'reason' => 'required|string'
+        ]);
         $document->update([
-            "status" => "rejected"
+            "status" => "rejected",
+            "reject_reason" => $validated['reason']
         ]);
 
         $message = "Your requested document is rejected. You can contact the admin regarding with your rejected request.";
