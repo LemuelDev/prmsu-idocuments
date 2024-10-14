@@ -39,15 +39,20 @@
                     {{ session('failed') }}
                 </div>
                @endif
+               @if (session()->has('error'))
+                <div class="toast-message text-red-600 text-center col-span-2   rounded min-w-16">
+                    {{ session('error') }}
+                </div>
+               @endif
                @if (session()->has('success'))
-                   <div class="toast-message text-green-600 text-center col-span-2  rounded min-w-16">
+                   <div class="toast-message text-green-600 text-center col-span-2   rounded min-w-16">
                        {{ session('success') }}
                    </div>
                @endif
                @if ($errors->any())
                    <div class="grid gap-2 col-span-2 ">
                        @foreach ($errors->all() as $error)
-                           <div class="toast-message text-red-600 text-center col-span-2  rounded min-w-26 duration-300 ease-in-out">
+                           <div class="toast-message text-red-600 text-center col-span-2   rounded min-w-26 duration-300 ease-in-out">
                                {{ $error }}
                            </div>
                        @endforeach

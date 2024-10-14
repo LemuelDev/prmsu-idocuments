@@ -471,6 +471,16 @@ class AdminController extends Controller
             "courses_abr" => "required"
         ]);
 
+         // Check if a course with the same name or abbreviation already exists
+          $existingCourse = Courses::where('courses', $validated['courses'])
+            ->orWhere('courses_abr', $validated['courses_abr'])
+            ->first();
+
+        if ($existingCourse) {
+            // Redirect back with a custom error message if a duplicate is found
+            return redirect()->back()->with('error', 'The course or abbreviation already exists.');
+        }
+
         Courses::create([
             "courses" => $validated["courses"],
             "courses_abr" => $validated["courses_abr"]
@@ -490,6 +500,19 @@ class AdminController extends Controller
             "courses" => "required",
             "courses_abr" => "required"
         ]);
+
+        // Check if another course with the same name or abbreviation exists, excluding the current one
+        $existingCourse = Courses::where(function($query) use ($validated) {
+            $query->where('courses', $validated['courses'])
+                ->orWhere('courses_abr', $validated['courses_abr']);
+        })
+        ->where('id', '!=', $id->id) // Exclude the current course from the check
+        ->first();
+
+        if ($existingCourse) {
+            // Redirect back with a custom error message if a duplicate is found
+            return redirect()->back()->with('error', 'The course or abbreviation already exists.');
+        }
 
         $id->update([
             "courses" => $validated["courses"],
@@ -524,6 +547,14 @@ class AdminController extends Controller
         $validated = request()->validate([
           "available_documents" => "required",
       ]);
+      
+      // Check if a course with the same name or abbreviation already exists
+      $existingDocs = AvailableDocuments::where('available_documents', operator: $validated['available_documents'])->first();
+
+        if ($existingDocs) {
+            // Redirect back with a custom error message if a duplicate is found
+            return redirect()->back()->with('error', 'The request document already exists.');
+        }
 
         AvailableDocuments::create([
             "available_documents" => $validated["available_documents"],
@@ -538,18 +569,34 @@ class AdminController extends Controller
    
     }
 
-    public function updateDocument(AvailableDocuments $document){
-
-          $validated = request()->validate([
-            "available_documents" => "required",
-        ]);
-
-        $document->update([
-            "available_documents" => $validated["available_documents"],
+    public function updateDocument(AvailableDocuments $id)
+    {
+        // Validate the request data
+        $validated = request()->validate([
+            "available_documents" => "required|string|max:255",
         ]);
         
-        return redirect()->route("admin.manageAvailableDocuments")->with("success", "Updated Successfully!");
+        // Check if another document with the same name exists, excluding the current one
+        $existingDoc = AvailableDocuments::where('available_documents', $validated['available_documents'])
+            ->where('id', '!=', $id->id)
+            ->first();
+    
+    
+        if ($existingDoc) {
+            // Redirect back with a custom error message if a duplicate is found
+            return redirect()->back()->with('error', 'The requested document already exists.');
+        }
+    
+        $id->update([
+            "available_documents" => $validated["available_documents"]   
+        ]);
+    
+        // Redirect to the manage documents route with a success message
+        return redirect()->route("admin.manageAvailableDocuments")->with("success", "Document updated successfully!");
     }
+    
+    
+    
 
     public function deleteDocument(AvailableDocuments $document){
 

@@ -15,7 +15,7 @@
               <td class="p-3 text-md text-center tracking-wide">{{$document->created_at->format('F j, Y')}}</td>
               <td class="p-3 text-md text-center tracking-wide w-40">
                 <div class="flex items-center justify-center gap-2">
-                  <a href="{{route('admin.editDocument', $document->id)}}" class="text-white rounded-md px-4 py-3 bg-green-500 hover:bg-green-600 text-center whitespace-nowrap">TRACK REQUEST</a>
+                  <a href="{{route('admin.editDocument', $document->id)}}" class="text-white rounded-md px-4 py-3 bg-green-500 hover:bg-green-600 text-center whitespace-nowrap">EDIT</a>
                   <button class="delete-btn text-white py-3 px-6 bg-red-500 hover:bg-red-600 rounded-md"
                         data-file-id="{{$document->id}}"
                         data-toggle-modal="#deleteConfirmationModal">

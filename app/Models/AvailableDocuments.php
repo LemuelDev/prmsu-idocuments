@@ -12,4 +12,6 @@ class AvailableDocuments extends Model
     protected $fillable = [
         'available_documents'
     ];
+
+    protected $table = "available_documents";
 }

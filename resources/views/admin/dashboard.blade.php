@@ -16,8 +16,8 @@
             <a href="{{route('admin.listOfRequestForms')}}" class="text-xl max-md:text-lg max-md:px-12 max-lg:px-18 max-sm:px-9  font-bold px-16 py-20 flex flex-col items-center justify-center rounded-xl shadow-2xl bg-[#4A249D] hover:bg-[#3e2478] text-white">
             <span class="text-2xl"><box-icon name='notepad' type='solid' color='#ffffff' ></box-icon></span>List of Request Forms</a>
 
-            <a href="{{route('admin.manageCourses')}}" class="text-xl max-md:text-lg max-md:px-12 max-lg:px-18 max-sm:px-9  font-bold px-16 py-20 flex flex-col items-center justify-center rounded-xl shadow-2xl bg-[#cf30ca] hover:bg-[#83257f] text-white">
-                <span class="text-2xl"><box-icon name='notepad' type='solid' color='#ffffff' ></box-icon></span>Manage Courses</a>
+            <a href="{{route('admin.manageCourses')}}" class="text-xl max-md:text-lg text-center max-md:px-12 max-lg:px-18 max-sm:px-9  font-bold px-16 py-[66px] flex flex-col items-center justify-center rounded-xl shadow-2xl bg-[#cf30ca] hover:bg-[#83257f] text-white">
+                <span class="text-2xl"><box-icon name='notepad' type='solid' color='#ffffff' ></box-icon></span>Manage Courses and Documents</a>
 
             <a href="{{route('admin.approvals')}}" class="text-xl max-md:text-lg max-md:px-12 max-lg:px-18 max-sm:px-9  font-bold px-16 py-20 flex flex-col items-center justify-center rounded-xl shadow-2xl bg-[#009FBD] hover:bg-[#2f899b] text-white">
             <span class="text-2xl"><box-icon name='user-check' type='solid' color='#ffffff' ></box-icon></span>Accounts</a>

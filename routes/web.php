@@ -75,7 +75,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::get('/admin/editDocument/edit/{id}', [AdminController::class , 'editDocument'])->name('admin.editDocument');
 
-    Route::put('/admin/manageDocument/{id}', [AdminController::class , 'updateDocument'])->name('admin.updateDocument');
+    Route::put('/admin/manageDocument/{id}/update', [AdminController::class , 'updateDocument'])->name('admin.updateDocument');
 
     Route::delete('/admin/deleteDocument/{document}', [AdminController::class , 'deleteDocument'])->name('admin.deleteDocument');
 
