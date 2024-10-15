@@ -53,14 +53,6 @@
                     <span class="font-bold text-md md:text-lg">Purpose of Request:</span>
                     <p class="text-lg">{{$requestDocument->purpose}}</p>
                 </div>
-                <div class="p-3 flex gap-2 md:items-start justify-center items-center">
-                    <span class="font-bold text-md md:text-lg">Birthplace:</span>
-                    <p class="text-lg">{{$requestDocument->birthplace}}</p>
-                </div>
-                <div class="p-3 flex gap-2 md:items-start justify-center items-center">
-                    <span class="font-bold text-md md:text-lg">Student Number:</span>
-                    <p class="text-lg">{{$requestDocument->student_number}}</p>
-                </div>
             </div>
 
             <div class="flex justify-center w-full max-w-[300px] mx-auto py-3 md:col-span-2">
