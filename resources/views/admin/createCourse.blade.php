@@ -9,7 +9,6 @@
             <span class="text-2xl" style="display: inline-block; vertical-align: middle;"><box-icon name='left-arrow-alt' color='#ffffff'></box-icon></span>
         </a>
     </div>
-    
 
     <section class="xl:max-w-[1300px] 2xl:max-w-[1500px] mx-auto p-4 w-full px-8 max-lg:px-4">
 
@@ -24,11 +23,11 @@
                     <div class="py-4 flex-col flex">
                         <div class="p-4 flex items-center gap-4">
                             <label for="courses" class="font-bold text-md">Course:</label>
-                            <input type="text" name="courses" id="courses" placeholder="Enter course"  class="px-6  py-3 rounded-md w-full font-bold shadow bg-transparent border-none outline-none focus:ring-2 focus:ring-green-600">
+                            <input type="text" name="courses" id="courses" placeholder="Enter course"  class="px-6  py-3 rounded-md w-full font-bold shadow  border-gray-400 border-2 outline-none focus:ring-2 focus:ring-green-600">
                         </div>
                         <div class="p-4 flex items-center gap-4">
                             <label for="course_abr" class="font-bold text-md">Course_abr:</label>
-                            <input type="text" name="courses_abr" id="course_abr" placeholder="(e.g BSINFOTECH )"  class="px-6 py-3 rounded-md w-full font-bold shadow bg-transparent border-none outline-none focus:ring-2 focus:ring-green-600">
+                            <input type="text" name="courses_abr" id="course_abr" placeholder="(e.g BSINFOTECH )"  class="px-6 py-3 rounded-md w-full font-bold shadow  border-gray-400 border-2 outline-none focus:ring-2 focus:ring-green-600">
                         </div>
                     </div>
                     <button type="submit"  class="text-white text-md max-w-[250px] mx-auto  text-center rounded-md px-10 py-3 bg-green-500 hover:bg-green-600">CREATE COURSE</button>

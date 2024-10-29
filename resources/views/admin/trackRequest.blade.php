@@ -81,6 +81,11 @@
                 <a  onclick="toggleModal('approveModal', {{$requestDocument->id}})" class="px-8 py-4 text-white text-center rounded-md bg-green-600 hover:bg-green-700">Approve</a>
                 <a  onclick="toggleModal('rejectModal', {{$requestDocument->id}})" class="px-8 py-4 text-white text-center rounded-md bg-red-600 hover:bg-red-700">Reject</a>
             </div>
+            @elseif ($requestDocument->status === 'ongoing')
+            <div class="grid grid-cols-2 mx-auto max-w-[700px] items-center w-full gap-4 py-3 max-sm:grid-cols-1 px-12">
+                <a  onclick="toggleModal('completeModal', {{$requestDocument->id}})" class="px-8 py-4 text-white text-center rounded-md bg-green-600 hover:bg-green-700">Complete</a>
+                <a  onclick="toggleModal('rejectModal', {{$requestDocument->id}})" class="px-8 py-4 text-white text-center rounded-md bg-red-600 hover:bg-red-700">Reject</a>
+            </div>
             @else
             <form method="POST" action="{{route('admin.deleteRequest', $requestDocument->id)}}" class="max-w-[300px] mx-auto py-3">
                 @csrf
@@ -90,7 +95,7 @@
             @endif
     
         </div>
-
+        
         <script>
             function toggleModal(modalId, documentId) {
                 const modal = document.getElementById(modalId);
@@ -109,6 +114,13 @@
                         const rejectUrl = `/admin/trackRequest/reject/${documentId}`;
                         rejectForm.action = rejectUrl;
                     }
+
+                    // add the complete modal
+                    if (modalId === 'completeModal') {
+                        const completeButton = modal.querySelector('#complete-button');
+                        const completeURl = `/admin/trackRequest/complete/${documentId}`;
+                        completeButton.href = completeURl;
+                    }
                 }
             }
 
@@ -122,6 +134,18 @@
                 <div class="flex justify-end">
                     <button onclick="toggleModal('approveModal')" class="px-4 py-2 bg-gray-300 text-gray-800 rounded-md mr-2">Cancel</button>
                     <a href="#" id="approve-button" class="px-4 py-2 bg-green-600 text-white rounded-md ">Approve</a>
+                </div>
+            </div>
+        </div>
+
+           <!-- Complete Modal -->
+           <div id="completeModal" class="fixed inset-0  items-center justify-center bg-black bg-opacity-50 hidden">
+            <div class="bg-white rounded-lg p-6 max-w-sm w-full">
+                <h2 class="text-xl font-semibold mb-4">Confirm Approval</h2>
+                <p class="mb-4">Are you sure you want to complete this request?</p>
+                <div class="flex justify-end">
+                    <button onclick="toggleModal('approveModal')" class="px-4 py-2 bg-gray-300 text-gray-800 rounded-md mr-2">Cancel</button>
+                    <a href="#" id="complete-button" class="px-4 py-2 bg-green-600 text-white rounded-md ">Complete</a>
                 </div>
             </div>
         </div>

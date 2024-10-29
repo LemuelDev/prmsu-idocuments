@@ -26,9 +26,19 @@
                     <div class="py-4 flex flex-col">
                         <div class="p-4 flex items-center gap-4">
                             <label for="available_documents" class="font-bold text-md">REQUESTING DOCUMENT:</label>
-                            <input type="text" name="available_documents" id="available_documents" value="{{$id->available_documents}}" class="px-6 py-3 rounded-md w-full font-bold shadow bg-transparent border-none outline-none focus:ring-2 focus:ring-green-600">
+                            <input type="text" name="available_documents" id="available_documents" value="{{$id->available_documents}}" class="px-6 py-3 rounded-md w-full font-bold shadow  border-gray-400 border-2 outline-none focus:ring-2 focus:ring-green-600">
                         </div>
-                      
+                        <div class="p-4 flex items-center gap-4">
+                            <label for="time" class="font-bold text-md">Processing Time:</label>
+                            <input type="number" name="time" id="time" value="{{$id->time}}" placeholder="Enter request document"  class="px-6  py-3 rounded-md w-full font-bold shadow  border-gray-400 border-2 outline-none focus:ring-2 focus:ring-green-600">
+                            <select name="interval" id="interval"  class="px-6  py-3 rounded-md w-full shadow  border-gray-400 border-2 outline-none focus:ring-2 focus:ring-green-600">>
+                                <option value="minute" {{$id->interval == 'minute' ? 'selected' : ''}}>minute</option>
+                                <option value="hour" {{$id->interval == 'hour' ? 'selected' : ''}}>hour</option>
+                                <option value="day" {{$id->interval == 'day' ? 'selected' : ''}}>day</option>
+                                <option value="week" {{$id->interval == 'week' ? 'selected' : ''}}>week</option>
+                                <option value="month" {{$id->interval == 'month' ? 'selected' : ''}}>month</option>
+                            </select>
+                        </div>
                     </div>
                     <button type="submit"  class="text-white text-md max-w-[250px] mx-auto text-center rounded-md px-10 py-3 bg-green-500 hover:bg-green-600">UPDATE DOCUMENT</button>
                 </form>

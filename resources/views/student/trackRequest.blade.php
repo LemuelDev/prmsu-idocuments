@@ -58,8 +58,6 @@
             <div class="flex justify-center w-full max-w-[300px] mx-auto py-3 md:col-span-2">
                 <a href="{{route('student.editRequest', $requestDocument->id)}}" class="px-8 py-3 text-white rounded-md bg-green-600 hover:bg-green-700">Edit Request</a>
             </div>
-
-           
        
         </div>
 

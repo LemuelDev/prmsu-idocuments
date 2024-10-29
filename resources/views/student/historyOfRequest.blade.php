@@ -18,6 +18,7 @@
                 <option value="{{ route('student.historyOfRequest') }}" {{ request()->url() == route('student.historyOfRequest') ? 'selected' : '' }}>All Request</option>
                 <option value="{{ route('student.lastTwoWeeks') }}" {{ request()->url() == route('student.lastTwoWeeks') ? 'selected' : '' }}>Last 2 weeks</option>
                 <option value="{{ route('student.lastMonth') }}" {{ request()->url() == route('student.lastMonth') ? 'selected' : '' }}>Last Month</option>
+                <option value="{{ route('student.ongoing') }}" {{ request()->url() == route('student.ongoing') ? 'selected' : '' }}>Ongoing</option>
                 <option value="{{ route('student.completed') }}" {{ request()->url() == route('student.completed') ? 'selected' : '' }}>Completed</option>
                 <option value="{{ route('student.rejected') }}" {{ request()->url() == route('student.rejected') ? 'selected' : '' }}>Rejected</option>
                 <option value="{{ route('student.forDeletion') }}" {{ request()->url() == route('student.forDeletion') ? 'selected' : '' }}>For Deletion</option>

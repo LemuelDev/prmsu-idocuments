@@ -30,4 +30,9 @@ class RequestedDocument extends Model
     {
         return $this->belongsTo(UserProfile::class, 'userprofile_id');
     }
+
+    public function getAvailableDocumentDetails()
+    {
+        return AvailableDocuments::where('available_documents', $this->requested_document)->first(['time', 'interval']);
+    }
 }

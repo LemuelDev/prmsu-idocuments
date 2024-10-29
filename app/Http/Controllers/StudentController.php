@@ -126,84 +126,143 @@ class StudentController extends Controller
         ]);
     }
 
-    public function historyOfRequest() {
-        
-        $requestForms = RequestedDocument::orderBy('created_at', 'desc')
-        ->where('userprofile_id', auth()->user()->userProfile->id)
-        ->whereIn('status', ['completed', 'rejected', 'for deletion']);
-        
+    public function historyOfRequest() 
+    {
+        $requestFormsQuery = RequestedDocument::orderBy('created_at', 'desc')
+            ->where('userprofile_id', auth()->user()->userProfile->id)
+            ->whereIn('status', ['completed', 'rejected', 'for deletion', 'ongoing']);
+    
+        // Check for search filter
         if (request()->has('search')) {
             $searchQuery = request()->get('search');
-            $requestForms->where('requested_document', 'like', '%' . $searchQuery . '%');
+            $requestFormsQuery->where('requested_document', 'like', '%' . $searchQuery . '%');
         }
         
-        
-        return  view('student.historyOfRequest',[
-            "forms" => $requestForms->paginate(7)
+        // Paginate the query
+        $requestForms = $requestFormsQuery->paginate(7);
+    
+        // Loop through each item in the paginated result to get available document details
+        foreach ($requestForms as $requestForm) {
+            $availableDetails = $requestForm->getAvailableDocumentDetails();
+            
+            if ($availableDetails) {
+                // Assign the time and interval to the requested document model temporarily
+                $requestForm->time = $availableDetails->time;
+                $requestForm->interval = $availableDetails->interval;
+            } else {
+                $requestForm->time = null;
+                $requestForm->interval = null;
+            }
+        }
+    
+        return view('student.historyOfRequest', [
+            "forms" => $requestForms
         ]);
     }
-
+    
     public function allRequest()
     {
         return $this->historyOfRequest();
     }
-
+    
     public function lastTwoWeeks()
     {
         $requestForms = $this->historyOfRequestQuery()
-            ->where('created_at', '>=', now()->subDays(14));
-
+            ->where('created_at', '>=', now()->subDays(14))
+            ->paginate(7);
+    
+        $requestForms = $this->addAvailableDocumentDetails($requestForms);
+    
         return view('student.historyOfRequest', [
-            "forms" => $requestForms->paginate(7)
+            "forms" => $requestForms
         ]);
     }
-
+    
     public function lastMonth()
     {
         $requestForms = $this->historyOfRequestQuery()
-            ->where('created_at', '>=', now()->subMonth());
-
+            ->where('created_at', '>=', now()->subMonth())
+            ->paginate(7);
+    
+        $requestForms = $this->addAvailableDocumentDetails($requestForms);
+    
         return view('student.historyOfRequest', [
-            "forms" => $requestForms->paginate(7)
+            "forms" => $requestForms
         ]);
     }
-
+    
+    public function ongoing()
+    {
+        $requestForms = $this->historyOfRequestQuery()
+            ->where('status', 'ongoing')
+            ->paginate(7);
+    
+        $requestForms = $this->addAvailableDocumentDetails($requestForms);
+    
+        return view('student.historyOfRequest', [
+            "forms" => $requestForms
+        ]);
+    }
+    
     public function completed()
     {
         $requestForms = $this->historyOfRequestQuery()
-            ->where('status', 'completed');
-
+            ->where('status', 'completed')
+            ->paginate(7);
+    
+        $requestForms = $this->addAvailableDocumentDetails($requestForms);
+    
         return view('student.historyOfRequest', [
-            "forms" => $requestForms->paginate(7)
+            "forms" => $requestForms
         ]);
     }
-
+    
     public function rejected()
     {
         $requestForms = $this->historyOfRequestQuery()
-            ->where('status', 'rejected');
-
+            ->where('status', 'rejected')
+            ->paginate(7);
+    
+        $requestForms = $this->addAvailableDocumentDetails($requestForms);
+    
         return view('student.historyOfRequest', [
-            "forms" => $requestForms->paginate(7)
+            "forms" => $requestForms
         ]);
     }
-
+    
     public function forDeletion()
     {
         $requestForms = $this->historyOfRequestQuery()
-            ->where('status', 'for deletion');
-
+            ->where('status', 'for deletion')
+            ->paginate(7);
+    
+        $requestForms = $this->addAvailableDocumentDetails($requestForms);
+    
         return view('student.historyOfRequest', [
-            "forms" => $requestForms->paginate(7)
+            "forms" => $requestForms
         ]);
     }
+    
 
     private function historyOfRequestQuery()
     {
         return RequestedDocument::orderBy('created_at', 'desc')
             ->where('userprofile_id', auth()->user()->userProfile->id)
-            ->whereIn('status', ['completed', 'rejected', 'for deletion']);
+            ->whereIn('status', ['completed', 'rejected', 'for deletion', 'ongoing']);
     }
+
+    private function addAvailableDocumentDetails($requestForms)
+    {
+        foreach ($requestForms as $requestForm) {
+            $availableDetails = $requestForm->getAvailableDocumentDetails();
+            
+            $requestForm->time = $availableDetails->time ?? null;
+            $requestForm->interval = $availableDetails->interval ?? null;
+        }
+
+        return $requestForms;
+    }
+
 
     public function updatePassword() {
         return view('student.updatePassword');

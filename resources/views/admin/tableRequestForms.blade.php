@@ -24,7 +24,7 @@
              @else
              <td class="p-3 text-md text-center tracking-wide min-w-40">
               <span class="rounded-md p-2 bg-orange-500 text-white ">{{$form->status}}</span>
-              </td> 
+             </td> 
              @endif
              <td class="p-3 text-md text-center tracking-wide w-40">{{$form->requested_document}} </td>
              <td class="p-3 text-md text-center tracking-wide">{{ $form->created_at->format('F j, Y') }} </td>

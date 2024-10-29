@@ -10,7 +10,9 @@ class AvailableDocuments extends Model
     use HasFactory;
 
     protected $fillable = [
-        'available_documents'
+        'available_documents',
+        'time',
+        'interval'
     ];
 
     protected $table = "available_documents";

@@ -23,7 +23,7 @@
                 
                 <div class="p-4 flex items-center gap-4">
                     <label for="requested_document" class="font-bold text-md">Type of Document Requested:</label>
-                    <select name="requested_document" id="requested_document" class="py-3 px-6 rounded-md border-none w-full outline-none shadow bg-transparent">
+                    <select name="requested_document" id="requested_document" class="py-3 px-6 rounded-md  w-full outline-none shadow border-gray-400 border-2">
                         <option value="" disabled selected>Select Document</option>
                         @forelse ($documents as $document)
                         <option value="{{$document->available_documents}}">{{$document->available_documents}}</option>
@@ -35,22 +35,22 @@
 
                 <div class="p-4 flex items-center gap-4">
                     <label for="num-ctc" class="font-bold text-md">No. of copies of CTC:</label>
-                    <input type="number" min="1" value="1" name="num-ctc" id="num-ctc" class="px-6 py-3 rounded-md w-full font-bold shadow bg-transparent border-none outline-none focus:ring-2 focus:ring-green-600">
+                    <input type="number" min="1" value="1" name="num-ctc" id="num-ctc" class="px-6 py-3 rounded-md w-full font-bold shadow border-gray-400 border-2  outline-none focus:ring-2 focus:ring-green-600">
                 </div>
 
                 <div class="p-4 flex items-center gap-4">
                     <label for="num-orig" class="font-bold text-md">No. of copies of Original Document:</label>
-                    <input type="number" min="1" value="1" name="num-orig" id="num-orig" class="px-6 py-3 rounded-md w-full font-bold shadow bg-transparent border-none outline-none focus:ring-2 focus:ring-green-600">
+                    <input type="number" min="1" value="1" name="num-orig" id="num-orig" class="px-6 py-3 rounded-md w-full font-bold shadow border-gray-400 border-2  outline-none focus:ring-2 focus:ring-green-600">
                 </div>
 
                 <div class="p-4 flex items-center gap-4">
                     <label for="purpose" class="font-bold text-md">Purpose of Request:</label>
-                    <input type="text" placeholder="Enter purpose here" name="purpose" id="purpose" class="placeholder-slate-600 px-6  py-3 w-full rounded-md shadow bg-transparent border-none outline-none focus:ring-2 focus:ring-green-600">
+                    <input type="text" placeholder="Enter purpose here" name="purpose" id="purpose" class="placeholder-slate-600 px-6  py-3 w-full rounded-md shadow border-gray-400 border-2  outline-none focus:ring-2 focus:ring-green-600">
                 </div>
 
                 <div class="p-4 flex items-center gap-4">
                     <label for="check_graduate" class="font-bold text-md">Did you graduate from PRMSU?</label>
-                    <select name="check_graduate" id="check_graduate" class="py-3 px-6 rounded-md border-none w-full outline-none shadow bg-transparent" onchange="toggleGraduateInputs()">
+                    <select name="check_graduate" id="check_graduate" class="py-3 px-6 rounded-md  w-full outline-none shadow border-gray-400 border-2" onchange="toggleGraduateInputs()">
                         <option value="" disabled selected>Select</option>
                         <option value="Yes">Yes</option>
                         <option value="No">No</option>
@@ -60,21 +60,21 @@
                 <div class="min-[470px]:p-4  flex-col items-center gap-4" id="graduate-info" style="display: none;">
                     <div class="flex max-lg:flex-col max-md:flex-row max-[470px]:flex-col items-center gap-3">
                         <label for="last_term" class="font-bold text-md md:min-w-[150px]">Enter last term:</label>
-                        <select name="last_term" id="last_term" class="py-3 px-6 rounded-md border-none sm:max-w-[150px] w-full outline-none shadow bg-transparent">
+                        <select name="last_term" id="last_term" class="py-3 px-6 rounded-md  sm:max-w-[150px] w-full outline-none shadow border-gray-400 border-2">
                             <option value="" disabled selected>Select</option>
                             <option value="1">1st term</option>
                             <option value="2">2nd term</option>
                             <option value="3">3rd term</option>
                             <option value="summer">Summer/Midyear</option>
                         </select>
-                        <input type="text" placeholder="Enter school year (2022-2023)" name="last_school_year" id="school_year" class="placeholder-slate-600 px-6  py-3 w-full rounded-md shadow bg-transparent border-none outline-none focus:ring-2 focus:ring-green-600">
+                        <input type="text" placeholder="Enter school year (2022-2023)" name="last_school_year" id="school_year" class="placeholder-slate-600 px-6  py-3 w-full rounded-md shadow border-gray-400 border-2  outline-none focus:ring-2 focus:ring-green-600">
                     </div>
                     <span class="text-gray-500 text-center italic">If not graduate, please fill this up</span>
                 </div>
 
                 <div class="p-4 flex items-center gap-4">
                     <label for="check_correction" class="font-bold text-md">Did you have a correction of name at PRMSU?</label>
-                    <select name="check_correction" id="check_correction" class="py-3 px-6 rounded-md border-none w-full outline-none shadow bg-transparent" onchange="toggleNameCorrectionInputs()">
+                    <select name="check_correction" id="check_correction" class="py-3 px-6 rounded-md  w-full outline-none shadow border-gray-400 border-2" onchange="toggleNameCorrectionInputs()">
                         <option value="" disabled selected>Select</option>
                         <option value="Yes">Yes</option>
                         <option value="No">No</option>
@@ -83,7 +83,7 @@
 
                 <div class="p-4  items-center gap-4" id="name-correction" style="display: none;">
                     <label for="orig_name" class="font-bold text-md">If yes, enter your original name:</label>
-                    <input type="text" placeholder="Enter original name" name="orig_name" id="orig_name" class="placeholder-slate-600 px-6  py-3 w-full rounded-md shadow bg-transparent border-none outline-none focus:ring-2 focus:ring-green-600">
+                    <input type="text" placeholder="Enter original name" name="orig_name" id="orig_name" class="placeholder-slate-600 px-6  py-3 w-full rounded-md shadow border-gray-400 border-2  outline-none focus:ring-2 focus:ring-green-600">
                 </div>
 
                 <div class="p-4 flex items-center gap-4 max-w-[500px] mx-auto md:col-span-2">

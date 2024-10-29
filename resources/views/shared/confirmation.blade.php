@@ -19,7 +19,7 @@
 <body>
 
       
-    <section class="flex items-center justify-center w-full min-h-screen bg-mesh-gradient py-8 max-sm:py-4 max-sm:px-4">
+    <section class="flex items-center justify-center w-full min-h-screen py-8 max-sm:py-4 max-sm:px-4">
         <div class="grid grid-cols-1 md:grid-cols-2 content-center gap-8 max-w-[1000px] mt-6 h-[650px] z-50 m-auto p-6 pt-28 max-sm:pt-16 max-sm:mt-0 max-sm:px-3">
             <div class="text-center pt-8 max-sm:pt-0">
                 <h1 class="text-3xl font-bold mb-4 leading-[2.5rem] max-sm:text-2xl">Your Account is successfully created. <br> Please wait for the Admin Approval!</h1>

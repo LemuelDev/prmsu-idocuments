@@ -24,9 +24,19 @@
                     <div class="py-4 flex flex-col">
                         <div class="p-4 flex items-center gap-4">
                             <label for="available_documents" class="font-bold text-md">REQUEST DOCUMENT:</label>
-                            <input type="text" name="available_documents" id="available_documents" placeholder="Enter request document"  class="px-6  py-3 rounded-md w-full font-bold shadow bg-transparent border-none outline-none focus:ring-2 focus:ring-green-600">
+                            <input type="text" name="available_documents" id="available_documents" placeholder="Enter request document"  class="px-6  py-3 rounded-md w-full font-bold shadow  border-gray-400 border-2 outline-none focus:ring-2 focus:ring-green-600">
                         </div>
-                        
+                        <div class="p-4 flex items-center gap-4">
+                            <label for="time" class="font-bold text-md">Processing Time:</label>
+                            <input type="number" name="time" id="time" value="1" placeholder="Enter request document"  class="px-6  py-3 rounded-md w-full font-bold shadow  border-gray-400 border-2 outline-none focus:ring-2 focus:ring-green-600">
+                            <select name="interval" id="interval"  class="px-6  py-3 rounded-md w-full shadow  border-gray-400 border-2 outline-none focus:ring-2 focus:ring-green-600">>
+                                <option value="minute">minute</option>
+                                <option value="hour">hour</option>
+                                <option value="day">day</option>
+                                <option value="week">week</option>
+                                <option value="month">month</option>
+                            </select>
+                        </div>
                     </div>
                     <button type="submit"  class="text-white text-md max-w-[250px] mx-auto  text-center rounded-md px-10 py-3 bg-green-500 hover:bg-green-600">CREATE DOCUMENT</button>
                 </form>

@@ -26,21 +26,21 @@
                 @method('PUT')
                 <div class="grid text-left gap-4 py-3">
                     <label for="current_password" class="font-bold text-lg">Current Password:</label>
-                    <input type="password" name="current_password" id="current_password" placeholder="Currrent password.." class="py-3 placeholder-slate-600 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl focus:outline-1 focus:ring-green-400 focus:ring-2">
+                    <input type="password" name="current_password" id="current_password" placeholder="Currrent password.." class="py-3 placeholder-slate-600 px-6 w-full rounded-md  border-gray-400 border-2 outline-none  shadow-xl focus:outline-1 focus:ring-green-400 focus:ring-2">
                     <span class="text-sm text-gray-500 italic">
                         Enter your current password
                     </span>
                 </div>
                 <div class="grid text-left gap-4 py-3">
                     <label for="new_password" class="font-bold text-lg">New Password:</label>
-                    <input type="password" name="new_password" id="new_password" placeholder="New password.." class="py-3 placeholder-slate-600 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl focus:outline-1 focus:ring-green-400 focus:ring-2">
+                    <input type="password" name="new_password" id="new_password" placeholder="New password.." class="py-3 placeholder-slate-600 px-6 w-full rounded-md  border-gray-400 border-2 outline-none  shadow-xl focus:outline-1 focus:ring-green-400 focus:ring-2">
                     <span class="text-sm text-gray-500 italic">
                         Must contain at least one lowercase letter, one uppercase letter, one number, and one special character.
                     </span>
                 </div>
                 <div class="grid text-left gap-4 py-3">
                     <label for="new_password_confirmation" class="font-bold text-lg">Confirm Password:</label>
-                    <input type="password" name="new_password_confirmation" id="new_password_confirmation" placeholder="Confirm password.." class="py-3 placeholder-slate-600 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl focus:outline-1 focus:ring-green-400 focus:ring-2">
+                    <input type="password" name="new_password_confirmation" id="new_password_confirmation" placeholder="Confirm password.." class="py-3 placeholder-slate-600 px-6 w-full rounded-md  border-gray-400 border-2 outline-none  shadow-xl focus:outline-1 focus:ring-green-400 focus:ring-2">
                     <span class="text-sm text-gray-500 italic">
                         Confirm your new password.
                     </span>

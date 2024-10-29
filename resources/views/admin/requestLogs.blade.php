@@ -18,6 +18,7 @@
                 <option value="{{ route('admin.requestLogs') }}" {{ request()->url() == route('admin.requestLogs') ? 'selected' : '' }}>All Request</option>
                 <option value="{{ route('admin.lastTwoWeeks') }}" {{ request()->url() == route('admin.lastTwoWeeks') ? 'selected' : '' }}>Last 2 weeks</option>
                 <option value="{{ route('admin.lastMonth') }}" {{ request()->url() == route('admin.lastMonth') ? 'selected' : '' }}>Last Month</option>
+                <option value="{{ route('admin.ongoing') }}" {{ request()->url() == route('admin.ongoing') ? 'selected' : '' }}>Ongoing</option>
                 <option value="{{ route('admin.completed') }}" {{ request()->url() == route('admin.completed') ? 'selected' : '' }}>Completed</option>
                 <option value="{{ route('admin.rejected') }}" {{ request()->url() == route('admin.rejected') ? 'selected' : '' }}>Rejected</option>
                 <option value="{{ route('admin.forDeletion') }}" {{ request()->url() == route('admin.forDeletion') ? 'selected' : '' }}>For Deletion</option>
@@ -31,7 +32,6 @@
                     window.location.href = selectedValue;
                 }
             });
-           
         </script>
 
         @include('admin.tableLogs')

@@ -22,23 +22,23 @@
                 
                 <div class="p-4 flex items-center gap-4">
                     <label for="name" class="font-bold">NAME:</label>
-                    <input type="text" name="name" readonly  class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{$user->name}}">
+                    <input type="text" name="name" readonly  class="py-3 px-6 w-full rounded-md  border-gray-400 border-2 outline-none shadow-xl" value="{{$user->name}}">
                 </div>
                 
                 <div class="p-4 flex items-center gap-4">
                     <label for="email" class="font-bold">EMAIL:</label>
-                    <input type="text" name="email" readonly  class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{$user->email}}">
+                    <input type="text" name="email" readonly  class="py-3 px-6 w-full rounded-md  border-gray-400 border-2 outline-none shadow-xl" value="{{$user->email}}">
                 </div>
                 
                 <div class="p-4 flex items-center gap-4">
                     <label for="address" class="font-bold">ADDRESS:</label>
-                    <input type="text" name="address" readonly  class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{$user->address}}">
+                    <input type="text" name="address" readonly  class="py-3 px-6 w-full rounded-md  border-gray-400 border-2 outline-none shadow-xl" value="{{$user->address}}">
                 </div>
           
  
                  <div class="p-4 flex items-center gap-4">
                     <label for="sex" class="font-bold">SEX:</label>
-                    <select name="sex" id="sex" @readonly(true) class="py-3 rounded-md w-full px-6 bg-slate-100 border-black shadow bg-transparent outline-green-500" >
+                    <select name="sex" id="sex" @readonly(true) class="py-3 rounded-md w-full px-6 shadow  border-gray-400 border-2 outline-none" >
                         <option value="" disabled selected>Select Sex</option>
                         <option value="male" {{$user->sex == 'male' ? 'selected' : 'disabled' }}>MALE</option>
                         <option value="female" {{$user->sex == 'female' ? 'selected' : 'disabled' }}>FEMALE</option>
@@ -47,7 +47,7 @@
 
                 <div class="p-4 flex items-center gap-4">
                     <label for="year" class="font-bold">YEAR:</label>
-                    <select name="year" id="year" @readonly(true) class="py-3 rounded-md w-full px-6 bg-slate-100 border-black outline-green-500 bg-transparent shadow">
+                    <select name="year" id="year" @readonly(true) class="py-3 rounded-md w-full px-6  border-gray-400 border-2 outline-none shadow">
                         <option value="" disabled selected>Select Year</option>
                         <option value="1" {{$user->year == '1' ? 'selected' : 'disabled' }}>1</option>
                         <option value="2" {{$user->year == '2' ? 'selected' : 'disabled' }}>2</option>
@@ -57,14 +57,14 @@
                 </div>
                 <div class="p-4 flex items-center gap-4">
                     <label for="phone_number" class="font-bold">Number:</label>
-                    <input type="number" readonly name="phone_number" id="phone_number" value="{{$user->phone_number}}" placeholder="Enter your phone number..." class="py-3 rounded-md w-full px-6 bg-transparent shadow bg-slate-100 border-black outline-green-500">
+                    <input type="number" readonly name="phone_number" id="phone_number" value="{{$user->phone_number}}" placeholder="Enter your phone number..." class="py-3 rounded-md w-full px-6 shadow  border-gray-400 border-2 outline-none">
                 </div>
                 
                 
                  <div class="p-4 grid gap-3">
                     <div class="flex items-center gap-4">
                         <label for="course" class="font-bold">COURSE:</label>
-                        <select name="course" id="course" class="py-3 rounded-md w-full px-6 bg-slate-100 border-black shadow outline-green-500 bg-transparent" >
+                        <select name="course" id="course" class="py-3 rounded-md w-full px-6 shadow  border-gray-400 border-2 outline-none" >
                             @forelse ($courses as $course)
                                 <option value="{{$course->courses}}" {{$course->courses === $user->course ? 'selected' : ''}}>{{$course->courses}}</option>
                             @empty

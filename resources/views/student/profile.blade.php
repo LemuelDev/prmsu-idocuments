@@ -22,59 +22,59 @@
                 @method('PUT')
                 <div class="p-4 flex items-center gap-4">
                     <label for="name" class="font-bold">FIRSTNAME:</label>
-                    <input type="text" name="firstname" class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->firstname}}">
+                    <input type="text" name="firstname" class="py-3 px-6 w-full rounded-md border-gray-400 border-2 outline-none shadow-xl" value="{{auth()->user()->userProfile->firstname}}">
                 </div>
                 <div class="p-4 flex items-center gap-4">
                     <label for="name" class="font-bold">MIDDLENAME:</label>
-                    <input type="text" name="middlename" class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->middlename}}">
+                    <input type="text" name="middlename" class="py-3 px-6 w-full rounded-md border-gray-400 border-2 outline-none  shadow-xl" value="{{auth()->user()->userProfile->middlename}}">
                 </div>
                 <div class="p-4 flex items-center gap-4">
                     <label for="name" class="font-bold">LASTNAME:</label>
-                    <input type="text" name="lastname" class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->lastname}}">
+                    <input type="text" name="lastname" class="py-3 px-6 w-full rounded-md border-gray-400 border-2 outline-none  shadow-xl" value="{{auth()->user()->userProfile->lastname}}">
                 </div>
                 <div class="p-4 flex items-center gap-4">
                     <label for="name" class="font-bold">EXTENSIONNAME:</label>
-                    <input type="text" name="extensionname" class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->extensionname}}">
+                    <input type="text" name="extensionname" class="py-3 px-6 w-full rounded-md border-gray-400 border-2 outline-none  shadow-xl" value="{{auth()->user()->userProfile->extensionname}}">
                 </div>
     
                 <div class="p-4 flex items-center gap-4">
                     <label for="username" class="font-bold">USERNAME:</label>
-                    <input type="text" name="username"  class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->username}}">
+                    <input type="text" name="username"  class="py-3 px-6 w-full rounded-md border-gray-400 border-2 outline-none  shadow-xl" value="{{auth()->user()->username}}">
                 </div>
     
                 <div class="p-4 flex items-center gap-4">
                     <label for="email" class="font-bold">EMAIL:</label>
-                    <input type="text" name="email"  class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->email}}">
+                    <input type="text" name="email"  class="py-3 px-6 w-full rounded-md border-gray-400 border-2 outline-none  shadow-xl" value="{{auth()->user()->userProfile->email}}">
                 </div>
                 
                 <div class="p-4 flex items-center gap-4">
                     <label for="student_number" class="font-bold">Student Number:</label>
-                    <input type="text" name="student_number"  class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->student_number}}">
+                    <input type="text" name="student_number"  class="py-3 px-6 w-full rounded-md border-gray-400 border-2 outline-none  shadow-xl" value="{{auth()->user()->userProfile->student_number}}">
                  </div>
 
                 <div class="p-4 flex items-center gap-4">
                     <label for="address" class="font-bold">ADDRESS:</label>
-                    <input type="text" name="address"  class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->address}}">
+                    <input type="text" name="address"  class="py-3 px-6 w-full rounded-md border-gray-400 border-2 outline-none  shadow-xl" value="{{auth()->user()->userProfile->address}}">
                 </div>
                 
                 <div class="p-4 flex items-center gap-4">
                     <label for="birthday" class="font-bold">BIRTHDAY:</label>
-                    <input type="date" name="birthday"  class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->birthday}}">
+                    <input type="date" name="birthday"  class="py-3 px-6 w-full rounded-md border-gray-400 border-2 outline-none  shadow-xl" value="{{auth()->user()->userProfile->birthday}}">
                  </div>
 
                  <div class="p-4 flex items-center gap-4">
                     <label for="birthplace" class="font-bold">BIRTHPLACE:</label>
-                    <input type="text" name="birthplace"  class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->birthplace}}">
+                    <input type="text" name="birthplace"  class="py-3 px-6 w-full rounded-md border-gray-400 border-2 outline-none  shadow-xl" value="{{auth()->user()->userProfile->birthplace}}">
                  </div>
                 
                 <div class="p-4 flex items-center gap-4">
                    <label for="age" class="font-bold">AGE:</label>
-                   <input type="text" name="age"  class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->age}}">
+                   <input type="text" name="age"  class="py-3 px-6 w-full rounded-md border-gray-400 border-2 outline-none  shadow-xl" value="{{auth()->user()->userProfile->age}}">
                 </div>
  
                  <div class="p-4 flex items-center gap-4">
                     <label for="sex" class="font-bold">SEX:</label>
-                    <select name="sex" id="sex" class="py-3 rounded-md w-full px-6 bg-slate-100 border-black shadow bg-transparent outline-green-500" >
+                    <select name="sex" id="sex" class="py-3 rounded-md w-full px-6 shadow border-gray-400 border-2 outline-none " >
                         <option value="" disabled selected>Select Sex</option>
                         <option value="male" {{ auth()->user()->userProfile->sex == 'male' ? 'selected' : '' }}>MALE</option>
                         <option value="female" {{ auth()->user()->userProfile->sex == 'female' ? 'selected' : '' }}>FEMALE</option>
@@ -92,7 +92,7 @@
 
                 <div class="p-4 flex items-center gap-4">
                     <label for="year" class="font-bold">YEAR:</label>
-                    <select name="year" id="year" class="py-3 rounded-md w-full px-6 bg-slate-100 border-black outline-green-500 bg-transparent shadow">
+                    <select name="year" id="year" class="py-3 rounded-md w-full px-6 shadow border-gray-400 border-2 outline-none ">
                         <option value="" disabled selected>Select Year</option>
                         <option value="1" {{ auth()->user()->userProfile->year == '1' ? 'selected' : '' }}>1</option>
                         <option value="2" {{ auth()->user()->userProfile->year == '2' ? 'selected' : '' }}>2</option>
@@ -102,7 +102,7 @@
                 </div>
                 <div class="p-4 flex items-center gap-4">
                     <label for="phone_number" class="font-bold">Number:</label>
-                    <input type="number" name="phone_number" id="phone_number" value="{{auth()->user()->userProfile->phone_number}}" placeholder="Enter your phone number..." class="py-3 rounded-md w-full px-6 bg-transparent shadow bg-slate-100 border-black outline-green-500">
+                    <input type="number" name="phone_number" id="phone_number" value="{{auth()->user()->userProfile->phone_number}}" placeholder="Enter your phone number..." class="py-3 rounded-md w-full px-6 border-gray-400 border-2 outline-none  shadow ">
                 </div>
  
                  <div class="p-4 flex items-center gap-4 max-w-[400px] mx-auto md:col-span-2 ">
@@ -140,74 +140,74 @@
         <div class="mt-4 py-10  w-full rounded-xl shadow grid grid-cols-2 max-md:grid-cols-1 gap-4 px-6">
             <div class="p-4 flex items-center gap-4">
                  <label for="name" class="font-bold">FIRSTNAME:</label>
-                 <input type="text" name="firstname" readonly class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->firstname}}">
+                 <input type="text" name="firstname" readonly class="py-3 px-6 w-full rounded-md border-gray-400 border-2 outline-none shadow-xl" value="{{auth()->user()->userProfile->firstname}}">
              </div>
              <div class="p-4 flex items-center gap-4">
                 <label for="name" class="font-bold">MIDDLENAME:</label>
-                <input type="text" name="middlename" readonly class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->middlename }}">
+                <input type="text" name="middlename" readonly class="py-3 px-6 w-full rounded-md border-gray-400 border-2 outline-none  shadow-xl" value="{{auth()->user()->userProfile->middlename }}">
             </div>
             <div class="p-4 flex items-center gap-4">
                 <label for="name" class="font-bold">LASTNAME:</label>
-                <input type="text" name="lastname" readonly class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->lastname}}">
+                <input type="text" name="lastname" readonly class="py-3 px-6 w-full rounded-md border-gray-400 border-2 outline-none  shadow-xl" value="{{auth()->user()->userProfile->lastname}}">
             </div>
             <div class="p-4 flex items-center gap-4">
                 <label for="name" class="font-bold">EXTENSIONNAME:</label>
-                <input type="text" name="extensionname" readonly class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->extensionname }}">
+                <input type="text" name="extensionname" readonly class="py-3 px-6 w-full rounded-md border-gray-400 border-2 outline-none  shadow-xl" value="{{auth()->user()->userProfile->extensionname }}">
             </div>
  
              <div class="p-4 flex items-center gap-4">
                  <label for="username" class="font-bold">USERNAME:</label>
-                 <input type="text" name="username" readonly  class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->username}}">
+                 <input type="text" name="username" readonly  class="py-3 px-6 w-full rounded-md border-gray-400 border-2 outline-none  shadow-xl" value="{{auth()->user()->username}}">
              </div>
  
              <div class="p-4 flex items-center gap-4">
                  <label for="email" class="font-bold">EMAIL:</label>
-                 <input type="text" name="email" readonly  class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->email}}">
+                 <input type="text" name="email" readonly  class="py-3 px-6 w-full rounded-md border-gray-400 border-2 outline-none  shadow-xl" value="{{auth()->user()->userProfile->email}}">
              </div>
 
              <div class="p-4 flex items-center gap-4">
                 <label for="student_number" class="font-bold">Student Number:</label>
-                <input type="text" name="student_number" readonly  class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->student_number}}">
+                <input type="text" name="student_number" readonly  class="py-3 px-6 w-full rounded-md border-gray-400 border-2 outline-none  shadow-xl" value="{{auth()->user()->userProfile->student_number}}">
              </div>
              
              <div class="p-4 flex items-center gap-4">
                  <label for="address" class="font-bold">ADDRESS:</label>
-                 <input type="text" name="address" readonly  class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->address}}">
+                 <input type="text" name="address" readonly  class="py-3 px-6 w-full rounded-md border-gray-400 border-2 outline-none  shadow-xl" value="{{auth()->user()->userProfile->address}}">
              </div>
  
              <div class="p-4 flex items-center gap-4">
-                 <label for="sex" class="font-bold">SEX:</label>
-                 <input type="text" name="sex" readonly  class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->sex}}">
+                 <label for="sex" class="font-bold min-w-[100px]">SEX:</label>
+                 <input type="text" name="sex" readonly  class="py-3 px-6 w-full rounded-md border-gray-400 border-2 outline-none  shadow-xl" value="{{auth()->user()->userProfile->sex}}">
              </div>
 
              <div class="p-4 flex items-center gap-4">
                 <label for="birthday" class="font-bold">BIRTHDAY:</label>
-                <input type="text" name="birthday" readonly   class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->birthday}}">
+                <input type="text" name="birthday" readonly   class="py-3 px-6 w-full rounded-md border-gray-400 border-2 outline-none  shadow-xl" value="{{auth()->user()->userProfile->birthday}}">
              </div>
 
              <div class="p-4 flex items-center gap-4">
                 <label for="birthplace" class="font-bold">BIRTHPLACE:</label>
-                <input type="text" name="birthplace" readonly   class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->birthplace}}">
+                <input type="text" name="birthplace" readonly   class="py-3 px-6 w-full rounded-md border-gray-400 border-2 outline-none  shadow-xl" value="{{auth()->user()->userProfile->birthplace}}">
              </div>
 
              <div class="p-4 flex items-center gap-4">
                 <label for="age" class="font-bold">AGE:</label>
-                <input type="text" name="age"  class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->age}}">
+                <input type="text" name="age"  class="py-3 px-6 w-full rounded-md border-gray-400 border-2 outline-none  shadow-xl" value="{{auth()->user()->userProfile->age}}">
             </div>
 
              <div class="p-4 flex items-center gap-4">
                 <label for="course" class="font-bold">COURSE:</label>
-                <input type="text" name="course" readonly  class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->course}}">
+                <input type="text" name="course" readonly  class="py-3 px-6 w-full rounded-md border-gray-400 border-2 outline-none  shadow-xl" value="{{auth()->user()->userProfile->course}}">
             </div>
 
             <div class="p-4 flex items-center gap-4">
                 <label for="year" class="font-bold">Year:</label>
-                <input type="text" name="year" readonly  class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->year}}">
+                <input type="text" name="year" readonly  class="py-3 px-6 w-full rounded-md border-gray-400 border-2 outline-none  shadow-xl" value="{{auth()->user()->userProfile->year}}">
             </div>
 
             <div class="p-4 flex items-center gap-4">
                 <label for="phone_number" class="font-bold">Phone Number:</label>
-                <input type="text" name="phone_number" readonly  class="py-3 px-6 w-full rounded-md border-none outline-none bg-transparent shadow-xl" value="{{auth()->user()->userProfile->phone_number}}">
+                <input type="text" name="phone_number" readonly  class="py-3 px-6 w-full rounded-md border-gray-400 border-2 outline-none  shadow-xl" value="{{auth()->user()->userProfile->phone_number}}">
             </div>
  
              <div class="p-4 flex items-center gap-4 max-w-[500px] mx-auto md:col-span-2">

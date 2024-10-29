@@ -18,7 +18,7 @@
       <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
       <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 </head>
-<body class="min-h-screen bg-mesh-gradient">
+<body class="min-h-screen">
 
     @yield('content')
 

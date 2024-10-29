@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('available_documents', function (Blueprint $table) {
             $table->id();
             $table->string('available_documents');
+            $table->string('time');
+            $table->string('interval');
             $table->timestamps();
         });
     }

@@ -2,7 +2,7 @@
 
 
 @section('content')
-<section class="flex items-center justify-center w-full min-h-screen py-4 bg-mesh-gradient ">
+<section class="flex items-center justify-center w-full min-h-screen py-4 ">
     <div class="grid grid-cols-1 md:grid-cols-2  max-w-[1100px]  h-auto m-auto p-6 pt-14 max-md:pt-4 ">
         <div class="text-center p-7 bg-blue-900 shadow-2xl rounded-xl max-md:px-4 grid justify-center gap-4 ">
             <div class="mt-10">
@@ -16,14 +16,14 @@
             <input type="hidden" name="token_user" value="{{ $token }}">
             <h4 class="text-center text-black py-4 text-3xl font-bold">NEW PASSWORD</h4>
             <p class="text-center">Enter your email and your new password.</p>
-            <input type="text" name="email" id="email" placeholder="Enter email..." class="py-3 w-full px-6 bor-r-8 bg-slate-100 border-black outline-green-500">
+            <input type="text" name="email" id="email" placeholder="Enter email..." class="py-3 w-full px-6 bor-r-8 border-2 border-gray-500 focus:border-none outline-green-500">
 
-            <input type="password" name="password" id="password" placeholder="Enter new password..." class="py-3 w-full px-6 bor-r-8 bg-slate-100 border-black outline-green-500">
+            <input type="password" name="password" id="password" placeholder="Enter new password..." class="py-3 w-full px-6 bor-r-8 border-2 border-gray-500 focus:border-none outline-green-500">
             <span class="text-sm text-gray-500 italic">
                 Must contain at least one lowercase letter, one uppercase letter, one number, and one special character.
             </span>
 
-            <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Confirm password..." class="py-3 w-full px-6 bor-r-8 bg-slate-100 border-black outline-green-500">
+            <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Confirm password..." class="py-3 w-full px-6 bor-r-8 border-2 border-gray-500 focus:border-none outline-green-500">
             <span class="text-sm text-gray-500 italic">
                 Confirm your password
              </span>

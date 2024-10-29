@@ -1,7 +1,7 @@
 @extends('layout.portal')
 
 @section('content')
-<section class="flex items-center justify-center w-full min-h-screen py-4 bg-mesh-gradient ">
+<section class="flex items-center justify-center w-full min-h-screen py-4 ">
     <div class="grid grid-cols-1 md:grid-cols-2 max-w-[1100px] h-auto m-auto p-6 pt-14 max-md:pt-4 ">
         <div class="text-center p-7 bg-blue-900 shadow-2xl rounded-xl max-md:px-4 grid justify-center gap-4 ">
             <div class="mt-10">
@@ -12,8 +12,8 @@
         <form action="{{ route('login') }}" method="post" class="grid content-center gap-5 py-6 px-12 shadow-2xl rounded-xl max-md:px-6 max-md:py-6">
             @csrf
             <h4 class="text-center text-black py-4 text-3xl font-bold">LOGIN</h4>
-            <input type="text" name="username" id="username" placeholder="Enter username..." class="py-3  px-6 bg-slate-100 border-black rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-green-500">
-            <input type="password" name="password" id="password" placeholder="Enter password..." class="py-3  px-6 bg-slate-100 border-black rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-green-500">
+            <input type="text" name="username" id="username" placeholder="Enter username..." class="py-3  px-6 border-2 border-gray-500 focus:border-none rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-green-500">
+            <input type="password" name="password" id="password" placeholder="Enter password..." class="py-3  px-6 border-2 border-gray-500 focus:border-none  rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-green-500">
             <button type="submit" class="py-3 text-xl px-7 bg-green-500 text-white rounded-lg w-full">LOGIN</button>
             <a href="{{ route('password.request') }}" class="text-blue-700 text-center text-lg hover:underline block">Forgot Password?</a>
             <p class="py-2 text-lg text-center">Don't have an account? <a href="{{ route('signup') }}" class="text-blue-700">Sign Up</a></p>

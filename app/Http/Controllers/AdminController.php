@@ -123,13 +123,22 @@ class AdminController extends Controller
     public function approveRequest(RequestedDocument $document) {
 
         $document->update([
+            "status" => "ongoing"
+        ]);
+        
+        return redirect()->route('admin.listOfRequestForms')->with('success', "The request is ongoing!");
+    }
+    
+    public function completeRequest(RequestedDocument $document) {
+
+        $document->update([
             "status" => "completed"
         ]);
         
-        $message = "Your requested document is now approved. You can download the pdf from your history logs and view your request of document.";
+        $message = "Your requested document is now completed. You can now go to the registrar office to claim your requested document.";
         Mail::to($document->userProfile->email )->send(new ApproveRequestDocument($message));
         
-        return redirect()->route('admin.listOfRequestForms')->with('success', "The request is approved!");
+        return redirect()->route('admin.listOfRequestForms')->with('success', "The request is completed!");
     }
 
     public function approve(UserProfile $user){
@@ -374,7 +383,7 @@ class AdminController extends Controller
 
     public function requestLogs() {
         $requestForms = RequestedDocument::orderBy('created_at', 'desc')
-        ->whereIn('status', ['completed', 'rejected', 'for deletion']);
+        ->whereIn('status', ['completed', 'rejected', 'for deletion', 'ongoing']);
         
         if (request()->has('search')) {
             $searchQuery = request()->get('search');
@@ -443,10 +452,21 @@ class AdminController extends Controller
         ]);
     }
 
+    
+    public function ongoing()
+    {
+        $requestForms = $this->historyOfRequestQuery()
+            ->where('status', 'ongoing');
+
+        return view('admin.requestLogs', [
+            "forms" => $requestForms->paginate(7)
+        ]);
+    }
+
     private function historyOfRequestQuery()
     {
         return RequestedDocument::orderBy('created_at', 'desc')
-            ->whereIn('status', ['completed', 'rejected', 'for deletion']);
+            ->whereIn('status', ['completed', 'rejected', 'for deletion', 'ongoing']);
     }
     
 
@@ -546,6 +566,8 @@ class AdminController extends Controller
 
         $validated = request()->validate([
           "available_documents" => "required",
+          "time"=> "required",
+          "interval" => "required",
       ]);
       
       // Check if a course with the same name or abbreviation already exists
@@ -558,6 +580,8 @@ class AdminController extends Controller
 
         AvailableDocuments::create([
             "available_documents" => $validated["available_documents"],
+            "time" => $validated["time"],
+            "interval" => $validated["interval"]
         ]);
       
       return redirect()->route("admin.manageAvailableDocuments")->with("success", "Created Successfully!");
@@ -574,6 +598,8 @@ class AdminController extends Controller
         // Validate the request data
         $validated = request()->validate([
             "available_documents" => "required|string|max:255",
+            "time"=> "required",
+            "interval" => "required",
         ]);
         
         // Check if another document with the same name exists, excluding the current one
@@ -588,13 +614,14 @@ class AdminController extends Controller
         }
     
         $id->update([
-            "available_documents" => $validated["available_documents"]   
+            "available_documents" => $validated["available_documents"]  ,
+            "time" => $validated["time"],
+            "interval" => $validated["interval"] 
         ]);
     
         // Redirect to the manage documents route with a success message
         return redirect()->route("admin.manageAvailableDocuments")->with("success", "Document updated successfully!");
     }
-    
     
     
 

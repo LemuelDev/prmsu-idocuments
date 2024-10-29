@@ -107,6 +107,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::get('/admin/rejected', [AdminController::class, 'rejected'])->name('admin.rejected');
 
+    Route::get('/admin/ongoing', [AdminController::class, 'ongoing'])->name('admin.ongoing');
+
     Route::get('/admin/for-deletion', [adminController::class, 'forDeletion'])->name('admin.forDeletion');
     
     Route::get('/admin/listOfRequestForms', [AdminController::class , 'listOfRequestForms'])->name('admin.listOfRequestForms');
@@ -116,6 +118,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::delete('/admin/trackRequest/{document}', [AdminController::class , 'deleteRequest'])->name('admin.deleteRequest');
 
     Route::get('/admin/trackRequest/approve/{document}', [AdminController::class , 'approveRequest'])->name('admin.approveRequest');
+
+    Route::get('/admin/trackRequest/complete/{document}', [AdminController::class , 'completeRequest'])->name('admin.completeRequest');
     
     Route::post('/admin/trackRequest/reject/{document}', [AdminController::class, 'rejectRequest'])->name('admin.rejectRequest');
 
@@ -167,6 +171,8 @@ Route::middleware(['auth', 'student'])->group(function () {
     Route::get('/student/last-month', [StudentController::class, 'lastMonth'])->name('student.lastMonth');
     
     Route::get('/student/completed', [StudentController::class, 'completed'])->name('student.completed');
+    
+    Route::get('/student/ongoing', [StudentController::class, 'ongoing'])->name('student.ongoing');
 
     Route::get('/student/rejected', [StudentController::class, 'rejected'])->name('student.rejected');
 
