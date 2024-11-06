@@ -52,7 +52,7 @@
                 </div>
                 <div class="p-3 flex gap-2 md:items-start justify-center items-center">
                     <span class="font-bold text-md md:text-lg text-center">Year:</span>
-                    <p class="text-lg text-center">3</p>
+                    <p class="text-lg text-center">{{$requestDocument->userProfile->year}}</p>
                 </div>
                 <div class="p-3 flex gap-2 md:items-start justify-center items-center">
                     <span class="font-bold text-md md:text-lg text-center">Sex:</span>
@@ -82,9 +82,8 @@
                 <a  onclick="toggleModal('rejectModal', {{$requestDocument->id}})" class="px-8 py-4 text-white text-center rounded-md bg-red-600 hover:bg-red-700">Reject</a>
             </div>
             @elseif ($requestDocument->status === 'ongoing')
-            <div class="grid grid-cols-2 mx-auto max-w-[700px] items-center w-full gap-4 py-3 max-sm:grid-cols-1 px-12">
-                <a  onclick="toggleModal('completeModal', {{$requestDocument->id}})" class="px-8 py-4 text-white text-center rounded-md bg-green-600 hover:bg-green-700">Complete</a>
-                <a  onclick="toggleModal('rejectModal', {{$requestDocument->id}})" class="px-8 py-4 text-white text-center rounded-md bg-red-600 hover:bg-red-700">Reject</a>
+            <div class="grid mx-auto max-w-[700px] items-center w-full gap-4 py-3  px-12">
+                <a  onclick="toggleModal('completeModal', {{$requestDocument->id}})" class="px-20 py-4 cursor-pointer text-white text-center rounded-md bg-green-600 hover:bg-green-700 max-w-[500px] mx-auto">Complete</a>
             </div>
             @else
             <form method="POST" action="{{route('admin.deleteRequest', $requestDocument->id)}}" class="max-w-[300px] mx-auto py-3">
