@@ -81,6 +81,10 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::get('/admin/approvals', [AdminController::class , 'approvals'])->name('admin.approvals');
 
+    Route::get('/admin/approvals/view/{id}', [AdminController::class , 'trackUserApproval'])->name('admin.trackApproval');
+
+    Route::get('/admin/approvals/delete/{id}', [AdminController::class , 'deleteUserApproval'])->name('admin.deleteApproval');
+
     Route::get('/admin/approvals/{user}', [AdminController::class , 'approve'])->name('admin.approve');
 
     Route::get('/admin/enable/{user}', [AdminController::class , 'enable'])->name('admin.enable');

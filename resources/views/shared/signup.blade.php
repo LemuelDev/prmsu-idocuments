@@ -38,7 +38,7 @@
                 <label for="extensionname">Extension Name:</label>
                 <input type="text" name="extensionname" id="name" value="{{ old('extensionname') }}" class="py-3 rounded-md w-full px-6  border-2 border-gray-400 focus:border-none outline-green-500">           
                 <span class="text-sm text-gray-500 italic">
-                    (E.g, jr, sr,)
+                    (E.g, jr, sr,)(Optional)
                  </span>
             </div>
     

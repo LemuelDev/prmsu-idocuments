@@ -6,8 +6,8 @@
           <th class="text-center text-xl p-4 font-semibold">Name</th>
           <th class="text-center text-xl p-4 font-semibold">Course</th>
           <th class="text-center text-xl p-4 font-semibold">Status</th>
-          <th class="text-center text-xl p-4 font-semibold">Requested</th>
-          <th class="text-center text-xl p-4 font-semibold">Date</th>
+          <th class="text-center text-xl p-4 font-semibold">Requested Document</th>
+          <th class="text-center text-xl p-4 font-semibold">Date Requested</th>
           <th class="text-center text-xl p-4 font-semibold">Action</th>
         </tr>
       </thead>

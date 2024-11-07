@@ -17,10 +17,10 @@
             <h4 class="font-bold text-2xl text-center max-sm:text-xl">Your Requested Documents</h4>
             <div class="flex items-center justify-center max-sm:flex-col-reverse gap-4">
                 <a href="{{route('student.createNewRequest')}}" class="px-6 py-3 rounded-lg text-white bg-slate-600 hover:bg-slate-700 text-center lg:max-w-[200px] max-sm:px-16 lg:ml-auto">Request now</a>
-                <form method="GET" class="flex items-center justify-center gap-4">
+                {{-- <form method="GET" class="flex items-center justify-center gap-4">
                     <input type="text" placeholder="Search Request" name="search" id="search" class="py-3 max-sm:py-2  px-6 bg-slate-200  rounded-lg w-full border border-gray-400 focus:border-none focus:outline-none focus:ring-2 focus:ring-green-500">
                     <button type="submit" class="py-3 px-6 max-sm:py-2 max-sm:px-4 bg-purple-600 rounded-md outline-none border-none text-white hover:bg-purple-700 ">Search</button>
-                </form>
+                </form> --}}
                
             </div>
         </div>

@@ -178,7 +178,11 @@ class AdminController extends Controller
             "courses" => $courses
         ]);
 
+    }
 
+    public function trackUserApproval(UserProfile $id) {
+    
+        return view("admin.trackApprove", ["user" => $id]);
     }
 
     public function getProfile(UserProfile $id){
@@ -225,6 +229,14 @@ class AdminController extends Controller
         $id->delete();
 
         return redirect()->route("admin.activeUsers")->with("success", "User deleted successfully!");
+
+    }
+
+    public function deleteUserApproval(Userprofile $id){
+
+        $id->delete();
+
+        return redirect()->route("admin.approvals")->with("success", "User deleted successfully!");
 
     }
 

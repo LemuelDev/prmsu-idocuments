@@ -9,7 +9,7 @@
           <th class="text-center text-xl p-4 font-semibold">Requested Document</th>
           <th class="text-center text-xl p-4 font-semibold">Date Requested </th>
           <th class="text-center text-xl p-4 font-semibold">Status</th>
-         
+          <th class="text-center text-xl p-4 font-semibold">Action</th>
         </tr>
       </thead>
       <tbody>
